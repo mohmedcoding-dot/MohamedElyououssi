@@ -1,1602 +1,1394 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Mohamed El Younoussi - Full Stack Web Developer | Creative Problem Solver | Building Modern Digital Experiences">
-    <title>Mohamed El Younoussi - Web Developer Portfolio</title>
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- AOS Library for Scroll Animations -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
+    <title>Mohamed El Younoussi - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
-        /* ===== CSS VARIABLES ===== */
-        :root {
-            --neon-green: #00ff88;
-            --pure-white: #ffffff;
-            --light-gray: #cfcfcf;
-            --dark-bg: #0d1117;
-            --darker-bg: #111827;
-            --gradient-bg: linear-gradient(135deg, #0d1117 0%, #111827 100%);
-            --neon-glow: 0 0 20px var(--neon-green);
-            --soft-glow: 0 0 30px rgba(0, 255, 136, 0.3);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            --border-radius: 12px;
-        }
-
-        /* ===== GLOBAL STYLES ===== */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
             font-family: 'Inter', sans-serif;
-            background: var(--gradient-bg);
-            color: var(--pure-white);
-            line-height: 1.6;
-            overflow-x: hidden;
         }
-
-        /* ===== TYPOGRAPHY ===== */
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .gradient-text {
-            background: linear-gradient(45deg, var(--neon-green), var(--pure-white));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* ===== NAVIGATION ===== */
-        .navbar {
+        
+        /* Loading Screen Styles */
+        .loading-screen {
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            z-index: 1000;
-            padding: 1rem 2rem;
-            backdrop-filter: blur(20px);
-            background: rgba(13, 17, 23, 0.8);
-            border-bottom: 1px solid rgba(0, 255, 136, 0.1);
-            transition: var(--transition);
-        }
-
-        .scrolled {
-            background: rgba(13, 17, 23, 0.95);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-            padding: 0.5rem 2rem;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--neon-green);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-link {
-            color: var(--pure-white);
-            text-decoration: none;
-            position: relative;
-            padding: 0.5rem 0;
-            transition: var(--transition);
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--neon-green);
-            transition: var(--transition);
-        }
-
-        .nav-link:hover::after,
-        .nav-link.active::after {
-            width: 100%;
-        }
-
-        .nav-link:hover {
-            color: var(--neon-green);
-        }
-
-        /* Mobile Menu */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 4px;
-            z-index: 1001;
-        }
-
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background: var(--neon-green);
-            transition: var(--transition);
-        }
-
-        /* ===== HERO SECTION ===== */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(0, 255, 136, 0.1) 0%, transparent 50%);
-            animation: float 6s ease-in-out infinite alternate;
-        }
-
-        .particles-container {
-            position: absolute;
             width: 100%;
             height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 1;
-        }
-
-        .particle {
-            position: absolute;
-            background: var(--neon-green);
-            border-radius: 50%;
-            opacity: 0.3;
-            animation: floatParticle 15s infinite linear;
-        }
-
-        @keyframes floatParticle {
-            0% {
-                transform: translateY(0) translateX(0) rotate(0deg);
-                opacity: 0.3;
-            }
-            100% {
-                transform: translateY(-100vh) translateX(100px) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px) rotate(0deg); }
-            100% { transform: translateY(-20px) rotate(2deg); }
-        }
-
-        .hero-content {
-            text-align: center;
-            z-index: 2;
-            max-width: 800px;
-            padding: 0 2rem;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            opacity: 0;
-            animation: slideUp 1s ease 0.5s forwards;
-        }
-
-        .typing-text {
-            font-size: 1.5rem;
-            color: var(--light-gray);
-            margin-bottom: 2rem;
-            min-height: 2em;
-            opacity: 0;
-            animation: slideUp 1s ease 1s forwards;
-        }
-
-        .hero-buttons {
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
             display: flex;
-            gap: 1rem;
             justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 3rem;
-            opacity: 0;
-            animation: slideUp 1s ease 1.5s forwards;
-        }
-
-        .btn {
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: var(--border-radius);
-            text-decoration: none;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-            display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 1s ease-out;
         }
-
-        .btn-primary {
-            background: linear-gradient(45deg, var(--neon-green), #00cc6a);
-            color: var(--dark-bg);
-            box-shadow: var(--soft-glow);
+        
+        .loading-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
         }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 40px rgba(0, 255, 136, 0.5);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--neon-green);
-            border: 2px solid var(--neon-green);
-        }
-
-        .btn-secondary:hover {
-            background: var(--neon-green);
-            color: var(--dark-bg);
-            box-shadow: var(--soft-glow);
-        }
-
-        .social-links {
+        
+        .logo-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            align-items: center;
+        }
+        
+        .geometric-loader {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border: 2px solid rgba(93, 92, 222, 0.1);
+            border-radius: 8px;
+            transform: rotate(45deg);
             opacity: 0;
-            animation: slideUp 1s ease 2s forwards;
+            animation: geometricSpin 2s ease-in-out 0.5s forwards;
         }
-
-        .social-link {
-            color: var(--light-gray);
-            font-size: 1.5rem;
-            transition: var(--transition);
+        
+        .geometric-loader::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border: 2px solid transparent;
+            border-top: 2px solid #5D5CDE;
+            border-right: 2px solid rgba(255, 255, 255, 0.6);
+            border-radius: 8px;
+            animation: borderGlow 1.5s ease-in-out infinite;
         }
-
-        .social-link:hover {
-            color: var(--neon-green);
-            transform: translateY(-5px);
-            text-shadow: var(--neon-glow);
+        
+        .logo-monogram {
+            position: relative;
+            z-index: 10;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #5D5CDE 0%, #8B87FF 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 15px 30px rgba(93, 92, 222, 0.3);
+            opacity: 0;
+            transform: scale(0.3) rotateY(180deg);
+            animation: logoReveal 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) 1.5s forwards;
         }
-
-        @keyframes slideUp {
+        
+        .monogram-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            letter-spacing: -1px;
+        }
+        
+        .student-name {
+            position: absolute;
+            top: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.4rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            opacity: 0;
+            animation: nameAppear 1s ease-out 2.5s forwards;
+        }
+        
+        .tagline {
+            position: absolute;
+            bottom: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-align: center;
+            opacity: 0;
+            animation: taglineAppear 1s ease-out 2.8s forwards;
+        }
+        
+        .status-indicator {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 1px;
+            overflow: hidden;
+            opacity: 0;
+            animation: statusAppear 0.5s ease-out 0.3s forwards;
+        }
+        
+        .status-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #5D5CDE 0%, #8B87FF 100%);
+            border-radius: 1px;
+            width: 0%;
+            animation: statusProgress 2s ease-out 0.8s forwards;
+        }
+        
+        .loading-text {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.8rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            opacity: 0;
+            animation: loadingTextAppear 0.5s ease-out 1s forwards;
+        }
+        
+        /* Main site hidden initially */
+        .main-content {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        
+        .main-content.visible {
+            opacity: 1;
+        }
+        
+        /* AI Chat Modal Styles */
+        .ai-modal {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        
+        .ai-chat-container {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        }
+        
+        .dark .ai-chat-container {
+            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+        }
+        
+        .ai-message {
+            animation: fadeInUp 0.3s ease-out;
+        }
+        
+        @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(50px);
+                transform: translateY(10px);
             }
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-
-        /* ===== SECTION STYLES ===== */
-        .section {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: var(--neon-green);
-            border-radius: 2px;
-        }
-
-        /* ===== ABOUT SECTION ===== */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 4rem;
-            align-items: center;
-            margin-bottom: 3rem;
-        }
-
-        .profile-image-container {
-            position: relative;
-            width: 300px;
-            height: 300px;
-            margin: 0 auto;
-        }
-
-        .profile-image {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            border: 3px solid var(--neon-green);
-            box-shadow: var(--soft-glow);
-            object-fit: cover;
-            display: block;
-            transition: var(--transition);
-        }
-
-        .profile-image:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 50px rgba(0, 255, 136, 0.5);
-        }
-
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--light-gray);
-        }
-
-        .about-text p {
-            margin-bottom: 1.5rem;
-        }
-
-        .highlights {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-top: 3rem;
-        }
-
-        .highlight-badge {
-            background: rgba(0, 255, 136, 0.1);
-            border: 1px solid var(--neon-green);
-            border-radius: var(--border-radius);
-            padding: 1rem;
-            text-align: center;
-            transition: var(--transition);
-        }
-
-        .highlight-badge:hover {
-            background: rgba(0, 255, 136, 0.2);
-            transform: translateY(-5px);
-        }
-
-        /* ===== SKILLS SECTION ===== */
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-        }
-
-        .skill-category {
-            background: rgba(17, 24, 39, 0.5);
-            border-radius: var(--border-radius);
-            padding: 2rem;
-            border: 1px solid rgba(0, 255, 136, 0.2);
-        }
-
-        .skill-category h3 {
-            color: var(--neon-green);
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-
-        .skill-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .skill-icon {
-            font-size: 1.5rem;
-            color: var(--neon-green);
-            width: 40px;
-            margin-right: 1rem;
-        }
-
-        .skill-info {
-            flex: 1;
-        }
-
-        .skill-name {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .skill-progress {
-            height: 8px;
-            background: rgba(0, 255, 136, 0.1);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .skill-progress-bar {
-            height: 100%;
-            background: linear-gradient(90deg, var(--neon-green), #00cc6a);
-            border-radius: 4px;
-            width: 0;
-            transition: width 2s ease;
-        }
-
-        /* ===== PROJECTS SECTION ===== */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background: rgba(17, 24, 39, 0.5);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            border: 1px solid rgba(0, 255, 136, 0.2);
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.2);
-        }
-
-        .project-image {
-            width: 100%;
-            height: 200px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .project-card:hover .project-image img {
-            transform: scale(1.1);
-        }
-
-        .project-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .project-card:hover .project-overlay {
-            opacity: 1;
-        }
-
-        .project-buttons {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .project-info {
-            padding: 1.5rem;
-        }
-
-        .project-title {
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
-            color: var(--neon-green);
-        }
-
-        .project-description {
-            color: var(--light-gray);
-            font-size: 0.9rem;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .tech-tag {
-            background: rgba(0, 255, 136, 0.1);
-            color: var(--neon-green);
-            padding: 0.3rem 0.7rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-        }
-
-        /* ===== EXPERIENCE SECTION ===== */
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 3px;
-            height: 100%;
-            background: var(--neon-green);
-            box-shadow: var(--neon-glow);
-        }
-
-        .timeline-item {
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .timeline-item:nth-child(odd) .timeline-content {
-            left: 0;
-            text-align: right;
-            padding-right: 3rem;
-        }
-
-        .timeline-item:nth-child(even) .timeline-content {
-            left: 50%;
-            text-align: left;
-            padding-left: 3rem;
-        }
-
-        .timeline-content {
-            position: relative;
-            background: rgba(17, 24, 39, 0.8);
-            border: 1px solid rgba(0, 255, 136, 0.3);
-            border-radius: var(--border-radius);
-            padding: 2rem;
-            width: 50%;
-            transition: var(--transition);
-        }
-
-        .timeline-content:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.2);
-        }
-
-        .timeline-dot {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 20px;
-            height: 20px;
-            background: var(--neon-green);
-            border-radius: 50%;
-            box-shadow: var(--neon-glow);
-            top: 2rem;
-        }
-
-        .experience-role {
-            color: var(--neon-green);
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .experience-company {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .experience-date {
-            color: var(--light-gray);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .experience-description ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .experience-description li {
-            position: relative;
-            padding-left: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: var(--light-gray);
-        }
-
-        .experience-description li::before {
-            content: '▸';
-            position: absolute;
-            left: 0;
-            color: var(--neon-green);
-        }
-
-        /* ===== CERTIFICATIONS SECTION ===== */
-        .certifications-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .cert-card {
-            height: 200px;
-            perspective: 1000px;
-        }
-
-        .cert-card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            transition: transform 0.8s;
-            transform-style: preserve-3d;
-        }
-
-        .cert-card:hover .cert-card-inner {
-            transform: rotateY(180deg);
-        }
-
-        .cert-card-front,
-        .cert-card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            border-radius: var(--border-radius);
-            border: 1px solid rgba(0, 255, 136, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            padding: 2rem;
-        }
-
-        .cert-card-front {
-            background: rgba(17, 24, 39, 0.8);
-        }
-
-        .cert-card-back {
-            background: rgba(0, 255, 136, 0.1);
-            transform: rotateY(180deg);
-        }
-
-        .cert-icon {
-            font-size: 3rem;
-            color: var(--neon-green);
-            margin-bottom: 1rem;
-        }
-
-        .cert-title {
-            color: var(--pure-white);
-            font-size: 1.1rem;
-            text-align: center;
-        }
-
-        .cert-org {
-            color: var(--neon-green);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .cert-year {
-            color: var(--light-gray);
-            margin-bottom: 1rem;
-        }
-
-        .cert-description {
-            color: var(--light-gray);
-            font-size: 0.9rem;
-            text-align: center;
-        }
-
-        /* ===== CONTACT SECTION ===== */
-        .contact-content {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
-
-        .form-group {
-            position: relative;
-        }
-
-        .form-input,
-        .form-textarea {
-            width: 100%;
-            padding: 1rem;
-            background: rgba(17, 24, 39, 0.8);
-            border: 2px solid rgba(0, 255, 136, 0.3);
-            border-radius: var(--border-radius);
-            color: var(--pure-white);
-            font-family: inherit;
-            transition: var(--transition);
-        }
-
-        .form-input:focus,
-        .form-textarea:focus {
-            outline: none;
-            border-color: var(--neon-green);
-            box-shadow: var(--soft-glow);
-        }
-
-        .form-textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        .form-submit {
-            align-self: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .form-submit::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .form-submit:hover::before {
-            left: 100%;
-        }
-
-        /* ===== FOOTER ===== */
-        .footer {
-            background: rgba(17, 24, 39, 0.9);
-            border-top: 1px solid rgba(0, 255, 136, 0.2);
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .footer-link {
-            color: var(--light-gray);
-            font-size: 1.2rem;
-            transition: var(--transition);
-        }
-
-        .footer-link:hover {
-            color: var(--neon-green);
-            transform: scale(1.2);
-        }
-
-        .footer-text {
-            color: var(--light-gray);
-            font-size: 0.9rem;
-        }
-
-        /* ===== BACK TO TOP BUTTON ===== */
-        .back-to-top {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 50px;
-            height: 50px;
-            background: var(--neon-green);
-            color: var(--dark-bg);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
-            z-index: 999;
-            box-shadow: var(--soft-glow);
-        }
-
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .back-to-top:hover {
-            transform: translateY(-5px);
-        }
-
-        /* ===== LOADING ANIMATION ===== */
-        .loader-wrapper {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--dark-bg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease;
-        }
-
-        .loader {
-            width: 50px;
-            height: 50px;
-            border: 3px solid rgba(0, 255, 136, 0.3);
-            border-radius: 50%;
-            border-top-color: var(--neon-green);
-            animation: spin 1s ease-in-out infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* ===== MODAL STYLES ===== */
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10000;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
-        }
-
-        .modal.open {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .modal-content {
-            background: var(--darker-bg);
-            border-radius: var(--border-radius);
-            padding: 2rem;
-            max-width: 600px;
-            width: 90%;
-            max-height: 80vh;
-            overflow-y: auto;
-            position: relative;
-            border: 1px solid var(--neon-green);
-            box-shadow: var(--neon-glow);
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: none;
-            color: var(--pure-white);
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .modal-close:hover {
-            color: var(--neon-green);
-        }
-
-        /* ===== RESPONSIVE DESIGN ===== */
-        @media (max-width: 768px) {
-            .nav-menu {
-                position: fixed;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: rgba(13, 17, 23, 0.95);
-                backdrop-filter: blur(20px);
-                flex-direction: column;
-                padding: 2rem;
-                transform: translateY(-100%);
-                opacity: 0;
-                visibility: hidden;
-                transition: var(--transition);
+        
+        /* Animations */
+        @keyframes geometricSpin {
+            from { 
+                opacity: 0; 
+                transform: rotate(45deg) scale(0.8);
             }
-
-            .nav-menu.active {
-                transform: translateY(0);
+            to { 
+                opacity: 1; 
+                transform: rotate(225deg) scale(1);
+            }
+        }
+        
+        @keyframes borderGlow {
+            0%, 100% { 
+                border-top-color: #5D5CDE;
+                border-right-color: rgba(255, 255, 255, 0.6);
+            }
+            50% { 
+                border-top-color: rgba(255, 255, 255, 0.8);
+                border-right-color: #5D5CDE;
+            }
+        }
+        
+        @keyframes logoReveal {
+            from { 
+                opacity: 0; 
+                transform: scale(0.3) rotateY(180deg);
+            }
+            60% {
+                transform: scale(1.1) rotateY(0deg);
+            }
+            to { 
+                opacity: 1; 
+                transform: scale(1) rotateY(0deg);
+            }
+        }
+        
+        @keyframes nameAppear {
+            from { 
+                opacity: 0; 
+                transform: translateX(-50%) translateY(-10px);
+                letter-spacing: 8px;
+            }
+            to { 
+                opacity: 1; 
+                transform: translateX(-50%) translateY(0px);
+                letter-spacing: 3px;
+            }
+        }
+        
+        @keyframes taglineAppear {
+            from { 
+                opacity: 0; 
+                transform: translateX(-50%) translateY(10px);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateX(-50%) translateY(0px);
+            }
+        }
+        
+        @keyframes statusAppear {
+            from { 
+                opacity: 0; 
+                transform: translateX(-50%) scaleX(0);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateX(-50%) scaleX(1);
+            }
+        }
+        
+        @keyframes statusProgress {
+            from { width: 0%; }
+            to { width: 100%; }
+        }
+        
+        @keyframes loadingTextAppear {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Rest of the site styles */
+        .gradient-text {
+            background: linear-gradient(135deg, #5D5CDE 0%, #8B87FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .skill-bar {
+            transition: width 2s ease-in-out;
+        }
+        
+        /* Interactive Elements */
+        .interactive-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .interactive-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .typing-animation {
+            border-right: 2px solid #5D5CDE;
+            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #5D5CDE; }
+        }
+        
+        .progress-circle {
+            transform: rotate(-90deg);
+            transition: stroke-dasharray 2s ease-in-out;
+        }
+        
+        .magic-btn {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(45deg, #5D5CDE, #8B87FF);
+            transition: all 0.3s ease;
+        }
+        
+        .magic-btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s;
+            opacity: 0;
+        }
+        
+        .magic-btn:hover::before {
+            animation: shine 0.8s ease-in-out;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); opacity: 0; }
+        }
+        
+        .particle-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #5D5CDE;
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(0) rotate(0deg);
                 opacity: 1;
-                visibility: visible;
             }
-
-            .hamburger {
-                display: flex;
+            50% { 
+                transform: translateY(-20px) rotate(180deg);
+                opacity: 0.5;
             }
-
-            .hamburger.active span:nth-child(1) {
-                transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .parallax-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="%235D5CDE" opacity="0.3"/><circle cx="80" cy="40" r="1" fill="%238B87FF" opacity="0.5"/><circle cx="40" cy="80" r="1.5" fill="%235D5CDE" opacity="0.4"/></svg>');
+            animation: parallaxMove 20s linear infinite;
+        }
+        
+        @keyframes parallaxMove {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-20px); }
+        }
+        
+        .glitch {
+            animation: glitch 2s linear infinite;
+        }
+        
+        @keyframes glitch {
+            2%, 64% { transform: translate(2px, 0) skew(0deg); }
+            4%, 60% { transform: translate(-2px, 0) skew(0deg); }
+            62% { transform: translate(0, 0) skew(5deg); }
+        }
+        
+        .neon-glow {
+            animation: neonGlow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes neonGlow {
+            from {
+                text-shadow: 0 0 10px #5D5CDE, 0 0 20px #5D5CDE, 0 0 30px #5D5CDE;
             }
-
-            .hamburger.active span:nth-child(2) {
+            to {
+                text-shadow: 0 0 5px #8B87FF, 0 0 10px #8B87FF, 0 0 15px #8B87FF;
+            }
+        }
+        
+        .code-rain {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        
+        .code-char {
+            position: absolute;
+            color: #5D5CDE;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            animation: codeRain 3s linear infinite;
+            opacity: 0.7;
+        }
+        
+        @keyframes codeRain {
+            0% {
+                transform: translateY(-100px);
                 opacity: 0;
             }
-
-            .hamburger.active span:nth-child(3) {
-                transform: rotate(-45deg) translate(7px, -6px);
+            10% {
+                opacity: 0.7;
             }
-
-            .hero h1 {
-                font-size: 2.5rem;
+            90% {
+                opacity: 0.7;
             }
-
-            .typing-text {
-                font-size: 1.2rem;
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
             }
-
-            .about-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-                gap: 2rem;
+        }
+        
+        .morphing-shape {
+            background: linear-gradient(45deg, #5D5CDE, #8B87FF);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            animation: morphing 8s ease-in-out infinite;
+        }
+        
+        @keyframes morphing {
+            0%, 100% {
+                border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
             }
-
-            .profile-image-container {
+            25% {
+                border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%;
+            }
+            50% {
+                border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%;
+            }
+            75% {
+                border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%;
+            }
+        }
+        
+        .interactive-chart {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .interactive-chart:hover {
+            transform: scale(1.05);
+        }
+        
+        .wave-effect {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .wave-effect::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 200%;
+            height: 100px;
+            background: linear-gradient(45deg, transparent, rgba(93, 92, 222, 0.1), transparent);
+            animation: wave 3s linear infinite;
+        }
+        
+        @keyframes wave {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0%); }
+        }
+        
+        .click-effect {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(93, 92, 222, 0.5);
+            transform: scale(0);
+            animation: ripple 0.6s linear;
+        }
+        
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .logo-container {
                 width: 250px;
                 height: 250px;
             }
-
-            .timeline::before {
-                left: 20px;
-            }
-
-            .timeline-item:nth-child(odd) .timeline-content,
-            .timeline-item:nth-child(even) .timeline-content {
-                left: 0;
-                padding-left: 3rem;
-                text-align: left;
-                width: calc(100% - 3rem);
-            }
-
-            .timeline-dot {
-                left: 20px;
-                transform: translateX(-50%);
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .highlights {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* ===== PRINT STYLES ===== */
-        @media print {
-            * {
-                background: white !important;
-                color: black !important;
-                box-shadow: none !important;
-                text-shadow: none !important;
-            }
-
-            .navbar,
-            .hero,
-            .projects,
-            .contact,
-            .footer,
-            .social-links,
-            .btn {
-                display: none !important;
-            }
-
-            .section {
-                page-break-inside: avoid;
-                opacity: 1 !important;
-                transform: none !important;
-            }
-
-            body {
-                font-size: 12pt;
-                line-height: 1.4;
-            }
-
-            .section-title {
-                font-size: 16pt;
-                margin-bottom: 1rem;
-            }
-
-            .profile-image {
+            .geometric-loader {
                 width: 150px;
                 height: 150px;
-                border: 2px solid #000;
             }
-        }
-
-        /* ===== SCROLL ANIMATIONS ===== */
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        .pulse {
-            animation: pulse 2s infinite;
+            .logo-monogram {
+                width: 60px;
+                height: 60px;
+            }
+            .monogram-text {
+                font-size: 1.4rem;
+            }
+            .student-name {
+                font-size: 1.1rem;
+            }
         }
     </style>
 </head>
-<body>
-    <!-- Loading Animation -->
-    <div class="loader-wrapper" id="loader">
-        <div class="loader"></div>
+<body class="scroll-smooth">
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="logo-container">
+            <div class="geometric-loader"></div>
+            
+            <div class="logo-monogram">
+                <div class="monogram-text">M</div>
+            </div>
+            
+            <div class="student-name">Mohamed El Younoussi</div>
+            <div class="tagline">Étudiant Développeur<br>3ème Année</div>
+            
+            <div class="status-indicator">
+                <div class="status-fill"></div>
+            </div>
+            <div class="loading-text" id="loadingText">Initialisation...</div>
+        </div>
     </div>
 
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <div class="logo">
-                <i class="fas fa-code"></i> MEY
+    <!-- AI Assistant Modal -->
+    <div id="ai-modal" class="fixed inset-0 ai-modal z-50 hidden flex items-center justify-center p-4">
+        <div class="ai-chat-container w-full max-w-2xl h-96 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 flex flex-col">
+            <div class="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-robot text-white text-sm"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-gray-900 dark:text-white">Assistant AI Gratuit</h3>
+                        <p class="text-xs text-gray-600 dark:text-gray-400">Powered by Claude</p>
+                    </div>
+                </div>
+                <button id="close-ai-modal" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">
+                    <i class="fas fa-times text-lg"></i>
+                </button>
             </div>
-            <ul class="nav-menu">
-                <li><a href="#home" class="nav-link active">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#skills" class="nav-link">Skills</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#experience" class="nav-link">Experience</a></li>
-                <li><a href="#certifications" class="nav-link">Certifications</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+            
+            <div id="ai-messages" class="flex-1 p-4 overflow-y-auto space-y-3">
+                <div class="ai-message flex items-start space-x-2">
+                    <div class="w-6 h-6 bg-green-600 rounded-full flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-robot text-white text-xs"></i>
+                    </div>
+                    <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-3 max-w-xs">
+                        <p class="text-sm text-gray-900 dark:text-white">Bonjour ! Je suis votre assistant AI. Posez-moi toutes vos questions sur la programmation, les études ou tout autre sujet !</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="p-4 border-t border-gray-200 dark:border-gray-700">
+                <div class="flex space-x-2">
+                    <input type="text" id="ai-input" placeholder="Tapez votre message..." 
+                           class="flex-1 px-4 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white">
+                    <button id="send-ai-message" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
             </div>
         </div>
-    </nav>
-
-    <!-- Back to Top Button -->
-    <div class="back-to-top" id="backToTop">
-        <i class="fas fa-arrow-up"></i>
     </div>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="particles-container" id="particles"></div>
-        <div class="hero-content">
-            <h1 class="gradient-text">Mohamed El Younoussi</h1>
-            <div class="typing-text" id="typing-text"></div>
-            <div class="hero-buttons">
-                <a href="#projects" class="btn btn-primary">
-                    <i class="fas fa-laptop-code"></i> Discover My Work
-                </a>
-                <a href="#contact" class="btn btn-secondary">
-                    <i class="fas fa-paper-plane"></i> Get In Touch
-                </a>
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+        <!-- Navigation -->
+        <nav class="fixed top-0 w-full z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-16">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-10 h-10 bg-gradient-to-r from-purple-600 to-blue-500 rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold text-lg">M</span>
+                        </div>
+                        <span class="font-semibold text-gray-900 dark:text-white">Mohamed El Younoussi</span>
+                    </div>
+                    
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <a href="#accueil" class="text-gray-700 dark:text-gray-300 hover:text-purple-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Accueil</a>
+                            <a href="#about" class="text-gray-700 dark:text-gray-300 hover:text-purple-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">À propos</a>
+                            <a href="#competences" class="text-gray-700 dark:text-gray-300 hover:text-purple-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Compétences</a>
+                            <a href="#projets" class="text-gray-700 dark:text-gray-300 hover:text-purple-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Projets</a>
+                            <button id="ai-assistant-btn" class="bg-green-600 text-white px-3 py-2 rounded-lg text-sm font-medium hover:bg-green-700 transition-colors flex items-center space-x-1">
+                                <i class="fas fa-robot text-sm"></i>
+                                <span class="hidden lg:inline">Assistant AI</span>
+                            </button>
+                            <button id="theme-toggle" class="text-gray-700 dark:text-gray-300 hover:text-purple-600 px-3 py-2 rounded-md text-sm font-medium transition-colors" title="Changer le thème">
+                                <i class="fas fa-sun dark:hidden"></i>
+                                <i class="fas fa-moon hidden dark:inline"></i>
+                            </button>
+                            <a href="#contact" class="bg-purple-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-purple-700 transition-colors">Contact</a>
+                        </div>
+                    </div>
+                    
+                    <div class="md:hidden flex items-center space-x-2">
+                        <button id="ai-assistant-btn-mobile" class="bg-green-600 text-white p-2 rounded-lg text-sm hover:bg-green-700 transition-colors">
+                            <i class="fas fa-robot"></i>
+                        </button>
+                        <button id="theme-toggle-mobile" class="text-gray-700 dark:text-gray-300 hover:text-purple-600 p-2 rounded-md text-sm transition-colors">
+                            <i class="fas fa-sun dark:hidden"></i>
+                            <i class="fas fa-moon hidden dark:inline"></i>
+                        </button>
+                        <button id="mobile-menu-btn" class="text-gray-700 dark:text-gray-300 p-2">
+                            <i class="fas fa-bars text-xl"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
-            <div class="social-links">
-                <a href="https://github.com" class="social-link" aria-label="GitHub" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://linkedin.com" class="social-link" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="mailto:" class="social-link" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            
+            <!-- Mobile menu -->
+            <div id="mobile-menu" class="md:hidden hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
+                <div class="px-2 pt-2 pb-3 space-y-1">
+                    <a href="#accueil" class="block text-gray-700 dark:text-gray-300 hover:text-purple-600 px-3 py-2 rounded-md text-base font-medium">Accueil</a>
+                    <a href="#about" class="block text-gray-700 dark:text-gray-300 hover:text-purple-600 px-3 py-2 rounded-md text-base font-medium">À propos</a>
+                    <a href="#competences" class="block text-gray-700 dark:text-gray-300 hover:text-purple-600 px-3 py-2 rounded-md text-base font-medium">Compétences</a>
+                    <a href="#projets" class="block text-gray-700 dark:text-gray-300 hover:text-purple-600 px-3 py-2 rounded-md text-base font-medium">Projets</a>
+                    <a href="#contact" class="block text-gray-700 dark:text-gray-300 hover:text-purple-600 px-3 py-2 rounded-md text-base font-medium">Contact</a>
+                </div>
             </div>
-        </div>
-    </section>
+        </nav>
 
-    <main>
+        <!-- Hero Section -->
+        <section id="accueil" class="hero-bg min-h-screen flex items-center justify-center relative overflow-hidden">
+            <div class="absolute inset-0 overflow-hidden">
+                <div class="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
+                <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
+            </div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+                <div class="floating mb-8">
+                    <div class="w-32 h-32 mx-auto bg-gradient-to-r from-purple-600 to-blue-500 rounded-full flex items-center justify-center shadow-2xl">
+                        <i class="fas fa-code text-white text-4xl"></i>
+                    </div>
+                </div>
+                
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 fade-in">
+                    <i class="fas fa-user-graduate mr-4"></i>Mohamed El Younoussi
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-300 mb-8 fade-in">
+                    <i class="fas fa-laptop-code mr-2"></i>Étudiant Développeur Passionné
+                </p>
+                <p class="text-lg text-gray-400 mb-12 max-w-2xl mx-auto fade-in">
+                    Étudiant de 3ème année avec 1 an d'expérience en programmation. Passionné par le développement web et les nouvelles technologies.
+                </p>
+                
+                <!-- Action Buttons -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 fade-in">
+                    <a href="#projets" class="bg-purple-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-purple-700 transition-colors inline-flex items-center justify-center">
+                        <i class="fas fa-folder-open mr-2"></i>
+                        <span class="hidden md:inline">Mes Projets</span>
+                        <span class="md:hidden">Projets</span>
+                    </a>
+                    <a href="#contact" class="border-2 border-white text-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-gray-900 transition-colors inline-flex items-center justify-center">
+                        <i class="fas fa-envelope mr-2"></i>
+                        <span class="hidden md:inline">Contact</span>
+                        <span class="md:hidden">Contact</span>
+                    </a>
+                    <button id="download-cv-btn" class="bg-green-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-green-700 transition-colors inline-flex items-center justify-center">
+                        <i class="fas fa-download mr-2"></i>
+                        <span class="hidden md:inline">Télécharger CV</span>
+                        <span class="md:hidden">CV</span>
+                    </button>
+                    <a href="https://github.com" target="_blank" class="bg-gray-800 text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-700 transition-colors inline-flex items-center justify-center">
+                        <i class="fab fa-github mr-2"></i>
+                        <span class="hidden md:inline">GitHub</span>
+                        <span class="md:hidden">GitHub</span>
+                    </a>
+                </div>
+
+                <!-- Social Share Buttons -->
+                <div class="flex justify-center space-x-4 mb-8 fade-in">
+                    <button onclick="shareOnSocial('facebook')" class="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700 transition-colors" title="Partager sur Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </button>
+                    <button onclick="shareOnSocial('twitter')" class="bg-blue-400 text-white p-3 rounded-full hover:bg-blue-500 transition-colors" title="Partager sur Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </button>
+                    <button onclick="shareOnSocial('linkedin')" class="bg-blue-700 text-white p-3 rounded-full hover:bg-blue-800 transition-colors" title="Partager sur LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </button>
+                    <button onclick="copyPortfolioLink()" class="bg-gray-600 text-white p-3 rounded-full hover:bg-gray-700 transition-colors" title="Copier le lien">
+                        <i class="fas fa-link"></i>
+                    </button>
+                </div>
+                
+                <!-- Stats -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 fade-in">
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-white mb-2" id="projects-count">0</div>
+                        <div class="text-gray-400">Projets Réalisés</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-white mb-2" id="experience-count">0</div>
+                        <div class="text-gray-400">Année de Coding</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-white mb-2" id="languages-count">0</div>
+                        <div class="text-gray-400">Langages Appris</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-white mb-2" id="hours-count">0</div>
+                        <div class="text-gray-400">Heures de Code</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- About Section -->
-        <section id="about" class="section" data-aos="fade-up">
-            <h2 class="section-title gradient-text">About Me</h2>
-            <div class="about-content">
-                <div class="profile-image-container">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Ccircle cx='150' cy='150' r='140' fill='%23111827' stroke='%2300ff88' stroke-width='3'/%3E%3Ccircle cx='120' cy='120' r='15' fill='%2300ff88'/%3E%3Ccircle cx='180' cy='120' r='15' fill='%2300ff88'/%3E%3Cpath d='M100 180 Q150 220 200 180' stroke='%2300ff88' stroke-width='3' fill='none'/%3E%3C/svg%3E" alt="Mohamed El Younoussi Profile" class="profile-image">
+        <section id="about" class="py-20 bg-white dark:bg-gray-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="fade-in">
+                        <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-6">À propos de moi</h2>
+                        <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">
+                            Bonjour ! Je suis Mohamed El Younoussi, étudiant de 15 ans en classe de 3ème au Collège Ibn Khaldoun à Rabat. 
+                            Passionné par l'informatique depuis tout petit, j'ai commencé la programmation il y a maintenant 1 an.
+                        </p>
+                        <p class="text-gray-600 dark:text-gray-300 mb-6">
+                            Mon aventure a commencé avec Scratch en 6ème, puis j'ai découvert HTML/CSS l'année dernière. 
+                            Aujourd'hui, j'apprends JavaScript et Python en autodidacte grâce à des tutoriels YouTube et des cours en ligne. 
+                            J'adore résoudre des problèmes et créer des petits projets pour m'entraîner.
+                        </p>
+                        <p class="text-gray-600 dark:text-gray-300 mb-8">
+                            Ce portfolio représente mon premier vrai projet web ! Mon rêve est d'intégrer une école d'ingénieur en informatique 
+                            après le bac et de devenir développeur full-stack. En attendant, je continue d'apprendre chaque jour 
+                            et de participer à des concours de programmation au collège.
+                        </p>
+                        
+                        <!-- Skills Progress -->
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-sm font-medium text-gray-700 dark:text-gray-300">HTML/CSS</span>
+                                    <span class="text-sm text-gray-500 dark:text-gray-400">75%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                    <div class="skill-bar bg-orange-500 h-2 rounded-full" data-width="75"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-sm font-medium text-gray-700 dark:text-gray-300">JavaScript</span>
+                                    <span class="text-sm text-gray-500 dark:text-gray-400">6%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                    <div class="skill-bar bg-yellow-500 h-2 rounded-full" data-width="6"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Python</span>
+                                    <span class="text-sm text-gray-500 dark:text-gray-400">5%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                    <div class="skill-bar bg-blue-500 h-2 rounded-full" data-width="5"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="fade-in">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl text-center">
+                                <div class="text-2xl font-bold text-purple-600 mb-2">3ème</div>
+                                <div class="text-sm text-gray-600 dark:text-gray-400">Niveau Scolaire</div>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl text-center">
+                                <div class="text-2xl font-bold text-blue-600 mb-2">1 An</div>
+                                <div class="text-sm text-gray-600 dark:text-gray-400">Expérience</div>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl text-center">
+                                <div class="text-2xl font-bold text-green-600 mb-2">5+</div>
+                                <div class="text-sm text-gray-600 dark:text-gray-400">Projets</div>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl text-center">
+                                <div class="text-2xl font-bold text-red-600 mb-2">24/7</div>
+                                <div class="text-sm text-gray-600 dark:text-gray-400">Motivation</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Tech Stack -->
+                        <div class="mt-8">
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Technologies apprises</h3>
+                            <div class="flex flex-wrap gap-3">
+                                <span class="px-3 py-1 bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 rounded-full text-sm">HTML5</span>
+                                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">CSS3</span>
+                                <span class="px-3 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 rounded-full text-sm">JavaScript</span>
+                                <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-sm">Python</span>
+                                <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full text-sm">Git</span>
+                                <span class="px-3 py-1 bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-200 rounded-full text-sm">Scratch</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="about-text">
-                    <p>Hello! I'm Mohamed El Younoussi, a passionate full-stack web developer with a love for creating innovative digital experiences. I specialize in building modern, responsive web applications that combine beautiful design with powerful functionality.</p>
-                    <p>With expertise in both frontend and backend technologies, I enjoy solving complex problems and turning ideas into reality. I'm constantly learning new technologies and staying up-to-date with the latest industry trends to deliver cutting-edge solutions.</p>
-                    <p>When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, or sharing knowledge with the developer community. I believe in writing clean, maintainable code and creating user experiences that make a difference.</p>
-                </div>
-            </div>
-            <div class="highlights">
-                <div class="highlight-badge">
-                    <h4><i class="fas fa-paint-brush"></i> Creative</h4>
-                    <p>Innovative solutions to complex problems</p>
-                </div>
-                <div class="highlight-badge">
-                    <h4><i class="fas fa-bolt"></i> Fast Learner</h4>
-                    <p>Quickly adapting to new technologies</p>
-                </div>
-                <div class="highlight-badge">
-                    <h4><i class="fas fa-puzzle-piece"></i> Problem Solver</h4>
-                    <p>Analytical thinking and creative solutions</p>
-                </div>
-                <div class="highlight-badge">
-                    <h4><i class="fas fa-users"></i> Team Player</h4>
-                    <p>Collaborative and communication-focused</p>
-                </div>
-            </div>
-            <div style="text-align: center; margin-top: 2rem;">
-                <a href="#" class="btn btn-primary" id="downloadCV">
-                    <i class="fas fa-download"></i> Download CV
-                </a>
             </div>
         </section>
 
         <!-- Skills Section -->
-        <section id="skills" class="section" data-aos="fade-up">
-            <h2 class="section-title gradient-text">Skills & Technologies</h2>
-            <div class="skills-container">
-                <div class="skill-category">
-                    <h3>Frontend Development</h3>
-                    <div class="skill-item">
-                        <i class="fab fa-html5 skill-icon"></i>
-                        <div class="skill-info">
-                            <div class="skill-name">HTML5</div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-width="95"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <i class="fab fa-css3-alt skill-icon"></i>
-                        <div class="skill-info">
-                            <div class="skill-name">CSS3 / Sass</div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-width="90"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <i class="fab fa-js-square skill-icon"></i>
-                        <div class="skill-info">
-                            <div class="skill-name">JavaScript (ES6+)</div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-width="88"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <i class="fab fa-react skill-icon"></i>
-                        <div class="skill-info">
-                            <div class="skill-name">React.js</div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-width="85"></div>
-                            </div>
-                        </div>
-                    </div>
+        <section id="competences" class="py-20 bg-gray-50 dark:bg-gray-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 fade-in">
+                    <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Mes Compétences</h2>
+                    <p class="text-lg text-gray-600 dark:text-gray-300">Ce que j'ai appris durant ma première année de programmation</p>
                 </div>
-
-                <div class="skill-category">
-                    <h3>Backend Development</h3>
-                    <div class="skill-item">
-                        <i class="fab fa-node-js skill-icon"></i>
-                        <div class="skill-info">
-                            <div class="skill-name">Node.js</div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-width="82"></div>
-                            </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-lg fade-in">
+                        <div class="w-12 h-12 bg-orange-100 dark:bg-orange-900 rounded-lg flex items-center justify-center mb-6">
+                            <i class="fab fa-html5 text-orange-600 dark:text-orange-400 text-xl"></i>
                         </div>
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">HTML5</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            Structure de pages web, éléments sémantiques, formulaires et bonnes pratiques.
+                        </p>
+                        <div class="text-orange-600 dark:text-orange-400 font-semibold">Niveau : Intermédiaire</div>
                     </div>
-                    <div class="skill-item">
-                        <i class="fas fa-database skill-icon"></i>
-                        <div class="skill-info">
-                            <div class="skill-name">MongoDB / SQL</div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-width="80"></div>
-                            </div>
+                    
+                    <div class="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-lg fade-in">
+                        <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center mb-6">
+                            <i class="fab fa-css3-alt text-blue-600 dark:text-blue-400 text-xl"></i>
                         </div>
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">CSS3</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            Stylisation, layout avec Flexbox, animations et design responsive.
+                        </p>
+                        <div class="text-blue-600 dark:text-blue-400 font-semibold">Niveau : Intermédiaire</div>
                     </div>
-                    <div class="skill-item">
-                        <i class="fab fa-python skill-icon"></i>
-                        <div class="skill-info">
-                            <div class="skill-name">Python</div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-width="75"></div>
-                            </div>
+                    
+                    <div class="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-lg fade-in">
+                        <div class="w-12 h-12 bg-yellow-100 dark:bg-yellow-900 rounded-lg flex items-center justify-center mb-6">
+                            <i class="fab fa-js-square text-yellow-600 dark:text-yellow-400 text-xl"></i>
                         </div>
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">JavaScript</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            Programmation interactive, manipulation du DOM et événements.
+                        </p>
+                        <div class="text-yellow-600 dark:text-yellow-400 font-semibold">Niveau : Débutant+</div>
                     </div>
-                    <div class="skill-item">
-                        <i class="fas fa-server skill-icon"></i>
-                        <div class="skill-info">
-                            <div class="skill-name">REST APIs</div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-width="85"></div>
-                            </div>
+                    
+                    <div class="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-lg fade-in">
+                        <div class="w-12 h-12 bg-green-100 dark:bg-green-900 rounded-lg flex items-center justify-center mb-6">
+                            <i class="fab fa-python text-green-600 dark:text-green-400 text-xl"></i>
                         </div>
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Python</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            Algorithmes de base, structures de données et projets simples.
+                        </p>
+                        <div class="text-green-600 dark:text-green-400 font-semibold">Niveau : Débutant+</div>
                     </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>Tools & Technologies</h3>
-                    <div class="skill-item">
-                        <i class="fab fa-git-alt skill-icon"></i>
-                        <div class="skill-info">
-                            <div class="skill-name">Git / GitHub</div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-width="90"></div>
-                            </div>
+                    
+                    <div class="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-lg fade-in">
+                        <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900 rounded-lg flex items-center justify-center mb-6">
+                            <i class="fab fa-git-alt text-purple-600 dark:text-purple-400 text-xl"></i>
                         </div>
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Git & GitHub</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            Gestion de versions, collaboration et partage de code.
+                        </p>
+                        <div class="text-purple-600 dark:text-purple-400 font-semibold">Niveau : Débutant</div>
                     </div>
-                    <div class="skill-item">
-                        <i class="fab fa-docker skill-icon"></i>
-                        <div class="skill-info">
-                            <div class="skill-name">Docker</div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-width="70"></div>
-                            </div>
+                    
+                    <div class="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-lg fade-in">
+                        <div class="w-12 h-12 bg-pink-100 dark:bg-pink-900 rounded-lg flex items-center justify-center mb-6">
+                            <i class="fas fa-puzzle-piece text-pink-600 dark:text-pink-400 text-xl"></i>
                         </div>
-                    </div>
-                    <div class="skill-item">
-                        <i class="fab fa-aws skill-icon"></i>
-                        <div class="skill-info">
-                            <div class="skill-name">AWS Cloud</div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-width="75"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <i class="fas fa-mobile-alt skill-icon"></i>
-                        <div class="skill-info">
-                            <div class="skill-name">Responsive Design</div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-width="95"></div>
-                            </div>
-                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Logique</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            Résolution de problèmes, algorithmes et pensée computationnelle.
+                        </p>
+                        <div class="text-pink-600 dark:text-pink-400 font-semibold">Niveau : Bon</div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Projects Section -->
-        <section id="projects" class="section" data-aos="fade-up">
-            <h2 class="section-title gradient-text">Projects & Work</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="E-Commerce Platform">
-                        <div class="project-overlay">
-                            <div class="project-buttons">
-                                <a href="#" class="btn btn-primary">Live Demo</a>
-                                <a href="#" class="btn btn-secondary">Source Code</a>
+        <section id="projets" class="py-20 bg-white dark:bg-gray-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 fade-in">
+                    <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Mes Projets</h2>
+                    <p class="text-lg text-gray-600 dark:text-gray-300">Découvrez mes réalisations d'étudiant</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project 1 -->
+                    <div class="bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow fade-in">
+                        <div class="h-48 bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center">
+                            <i class="fas fa-user-circle text-white text-4xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Portfolio Personnel</h3>
+                                <span class="px-2 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs rounded">Terminé</span>
                             </div>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
+                                Mon premier site web personnel créé avec HTML, CSS et JavaScript. Inclut des animations et un design responsive adapté aux mobiles.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-2 py-1 bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 text-xs rounded">HTML5</span>
+                                <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs rounded">CSS3</span>
+                                <span class="px-2 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 text-xs rounded">JavaScript</span>
+                            </div>
+                            <div class="text-sm text-gray-500 dark:text-gray-400">Durée: 3 semaines • Novembre 2024</div>
                         </div>
                     </div>
-                    <div class="project-info">
-                        <h3 class="project-title">E-Commerce Platform</h3>
-                        <p class="project-description">Full-stack e-commerce solution with React, Node.js, and MongoDB. Features include user authentication, payment integration, and admin dashboard.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">MongoDB</span>
-                            <span class="tech-tag">Stripe</span>
+                    
+                    <!-- Project 2 -->
+                    <div class="bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow fade-in">
+                        <div class="h-48 bg-gradient-to-r from-green-500 to-teal-500 flex items-center justify-center">
+                            <i class="fas fa-calculator text-white text-4xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Calculatrice Web</h3>
+                                <span class="px-2 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs rounded">Terminé</span>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
+                                Une calculatrice interactive avec toutes les opérations de base. Interface moderne et gestion des erreurs. Mon premier projet JavaScript !
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-2 py-1 bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 text-xs rounded">HTML5</span>
+                                <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs rounded">CSS3</span>
+                                <span class="px-2 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 text-xs rounded">JavaScript</span>
+                            </div>
+                            <div class="text-sm text-gray-500 dark:text-gray-400">Durée: 1 semaine • Octobre 2024</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 3 -->
+                    <div class="bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow fade-in">
+                        <div class="h-48 bg-gradient-to-r from-pink-500 to-red-500 flex items-center justify-center">
+                            <i class="fas fa-gamepad text-white text-4xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Pierre-Papier-Ciseaux</h3>
+                                <span class="px-2 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs rounded">Terminé</span>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
+                                Mon premier jeu en Python ! Jeu contre l'ordinateur avec système de scores et interface en console colorée.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-2 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs rounded">Python</span>
+                                <span class="px-2 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-xs rounded">Colorama</span>
+                            </div>
+                            <div class="text-sm text-gray-500 dark:text-gray-400">Durée: 3 jours • Septembre 2024</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 4 -->
+                    <div class="bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow fade-in">
+                        <div class="h-48 bg-gradient-to-r from-indigo-500 to-blue-500 flex items-center justify-center">
+                            <i class="fas fa-question-circle text-white text-4xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Quiz Interactif</h3>
+                                <span class="px-2 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 text-xs rounded">En cours</span>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
+                                Un quiz de culture générale avec timer et système de points. Mon projet actuel pour améliorer mes compétences JavaScript.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-2 py-1 bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 text-xs rounded">HTML5</span>
+                                <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs rounded">CSS3</span>
+                                <span class="px-2 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 text-xs rounded">JavaScript</span>
+                            </div>
+                            <div class="text-sm text-gray-500 dark:text-gray-400">Avancement: 70% • Décembre 2024</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 5 -->
+                    <div class="bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow fade-in">
+                        <div class="h-48 bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
+                            <i class="fas fa-clock text-white text-4xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Chronomètre Digital</h3>
+                                <span class="px-2 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs rounded">Terminé</span>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
+                                Chronomètre avec fonctions start/stop/reset. Design minimaliste et sons de notification. Parfait pour réviser !
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-2 py-1 bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 text-xs rounded">HTML5</span>
+                                <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs rounded">CSS3</span>
+                                <span class="px-2 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 text-xs rounded">JavaScript</span>
+                            </div>
+                            <div class="text-sm text-gray-500 dark:text-gray-400">Durée: 2 jours • Octobre 2024</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 6 -->
+                    <div class="bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow fade-in">
+                        <div class="h-48 bg-gradient-to-r from-amber-500 to-orange-500 flex items-center justify-center">
+                            <i class="fas fa-robot text-white text-4xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Chatbot Simple</h3>
+                                <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs rounded">Planifié</span>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
+                                Mon prochain défi : créer un chatbot qui répond aux questions basiques. Utilisation d'API et amélioration de Python.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-2 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs rounded">Python</span>
+                                <span class="px-2 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 text-xs rounded">API</span>
+                                <span class="px-2 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-xs rounded">Tkinter</span>
+                            </div>
+                            <div class="text-sm text-gray-500 dark:text-gray-400">Prévision: Janvier 2025</div>
                         </div>
                     </div>
                 </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Task Management App">
-                        <div class="project-overlay">
-                            <div class="project-buttons">
-                                <a href="#" class="btn btn-primary">Live Demo</a>
-                                <a href="#" class="btn btn-secondary">Source Code</a>
+                
+                <!-- Learning Journey Section -->
+                <div class="mt-16 fade-in">
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center">Mon Parcours d'Apprentissage</h3>
+                    <div class="max-w-4xl mx-auto">
+                        <div class="space-y-8">
+                            <!-- Timeline Item 1 -->
+                            <div class="flex items-start space-x-4">
+                                <div class="w-4 h-4 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                                <div class="flex-1">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <h4 class="text-lg font-semibold text-gray-900 dark:text-white">Découverte de Scratch</h4>
+                                        <span class="text-sm text-gray-500 dark:text-gray-400">6ème (2022)</span>
+                                    </div>
+                                    <p class="text-gray-600 dark:text-gray-300">
+                                        Premiers pas en programmation avec Scratch au collège. Création de jeux simples et animations.
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-title">Task Management App</h3>
-                        <p class="project-description">Modern task management application with real-time updates, drag & drop functionality, and team collaboration features.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Vue.js</span>
-                            <span class="tech-tag">Firebase</span>
-                            <span class="tech-tag">CSS3</span>
-                            <span class="tech-tag">WebSockets</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Weather Dashboard">
-                        <div class="project-overlay">
-                            <div class="project-buttons">
-                                <a href="#" class="btn btn-primary">Live Demo</a>
-                                <a href="#" class="btn btn-secondary">Source Code</a>
+                            
+                            <!-- Timeline Item 2 -->
+                            <div class="flex items-start space-x-4">
+                                <div class="w-4 h-4 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                                <div class="flex-1">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <h4 class="text-lg font-semibold text-gray-900 dark:text-white">Apprentissage HTML/CSS</h4>
+                                        <span class="text-sm text-gray-500 dark:text-gray-400">5ème (2023)</span>
+                                    </div>
+                                    <p class="text-gray-600 dark:text-gray-300">
+                                        Découverte du développement web grâce à des tutoriels YouTube. Création de mes premières pages web.
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-title">Weather Dashboard</h3>
-                        <p class="project-description">Interactive weather dashboard with beautiful data visualizations, location-based forecasts, and responsive design.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">API</span>
-                            <span class="tech-tag">Chart.js</span>
-                            <span class="tech-tag">CSS3</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Social Media Dashboard">
-                        <div class="project-overlay">
-                            <div class="project-buttons">
-                                <a href="#" class="btn btn-primary">Live Demo</a>
-                                <a href="#" class="btn btn-secondary">Source Code</a>
+                            
+                            <!-- Timeline Item 3 -->
+                            <div class="flex items-start space-x-4">
+                                <div class="w-4 h-4 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
+                                <div class="flex-1">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <h4 class="text-lg font-semibold text-gray-900 dark:text-white">JavaScript & Python</h4>
+                                        <span class="text-sm text-gray-500 dark:text-gray-400">4ème-3ème (2024)</span>
+                                    </div>
+                                    <p class="text-gray-600 dark:text-gray-300">
+                                        Apprentissage de la programmation interactive avec JavaScript et des algorithmes avec Python.
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-title">Social Media Dashboard</h3>
-                        <p class="project-description">Analytics dashboard for social media management with real-time data, interactive charts, and performance insights.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">Redux</span>
-                            <span class="tech-tag">D3.js</span>
-                            <span class="tech-tag">Node.js</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Restaurant Website">
-                        <div class="project-overlay">
-                            <div class="project-buttons">
-                                <a href="#" class="btn btn-primary">Live Demo</a>
-                                <a href="#" class="btn btn-secondary">Source Code</a>
+                            
+                            <!-- Timeline Item 4 -->
+                            <div class="flex items-start space-x-4">
+                                <div class="w-4 h-4 bg-yellow-600 rounded-full mt-2 flex-shrink-0"></div>
+                                <div class="flex-1">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <h4 class="text-lg font-semibold text-gray-900 dark:text-white">Objectifs Futurs</h4>
+                                        <span class="text-sm text-gray-500 dark:text-gray-400">2025+</span>
+                                    </div>
+                                    <p class="text-gray-600 dark:text-gray-300">
+                                        Apprendre React, Node.js et les bases de données. Participer à des concours de programmation.
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-title">Restaurant Website</h3>
-                        <p class="project-description">Modern restaurant website with online ordering system, menu management, and customer reservation functionality.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">HTML5</span>
-                            <span class="tech-tag">CSS3</span>
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">PHP</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Portfolio Website">
-                        <div class="project-overlay">
-                            <div class="project-buttons">
-                                <a href="#" class="btn btn-primary">Live Demo</a>
-                                <a href="#" class="btn btn-secondary">Source Code</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-title">Portfolio Website</h3>
-                        <p class="project-description">Personal portfolio website showcasing modern design principles, smooth animations, and responsive layouts.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">HTML5</span>
-                            <span class="tech-tag">CSS3</span>
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">GSAP</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Experience Section -->
-        <section id="experience" class="section" data-aos="fade-up">
-            <h2 class="section-title gradient-text">Experience & Journey</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3 class="experience-role">Senior Full Stack Developer</h3>
-                        <h4 class="experience-company">TechCorp Solutions</h4>
-                        <p class="experience-date">2023 - Present</p>
-                        <div class="experience-description">
-                            <ul>
-                                <li>Led development of scalable web applications serving 100K+ users</li>
-                                <li>Implemented modern React architecture and state management solutions</li>
-                                <li>Optimized application performance resulting in 40% faster load times</li>
-                                <li>Mentored junior developers and conducted code reviews</li>
-                            </ul>
+        <!-- Interactive Playground Section -->
+        <section id="playground" class="py-20 bg-gray-50 dark:bg-gray-800 relative overflow-hidden">
+            <div class="parallax-bg"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 fade-in">
+                    <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4 neon-glow">Zone Interactive</h2>
+                    <p class="text-lg text-gray-600 dark:text-gray-300">Testez mes créations et interagissez avec des éléments amusants !</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Mini Calculator -->
+                    <div class="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg interactive-card click-effect fade-in">
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">🧮 Mini Calculatrice</h3>
+                        <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg mb-4">
+                            <input type="text" id="calcDisplay" class="w-full text-right text-xl font-mono bg-transparent border-none focus:outline-none text-gray-900 dark:text-white" readonly value="0">
+                        </div>
+                        <div class="grid grid-cols-4 gap-2">
+                            <button class="calc-btn magic-btn text-white py-2 rounded" onclick="clearCalc()">C</button>
+                            <button class="calc-btn magic-btn text-white py-2 rounded" onclick="deleteLast()">⌫</button>
+                            <button class="calc-btn magic-btn text-white py-2 rounded" onclick="appendToCalc('/')">/</button>
+                            <button class="calc-btn magic-btn text-white py-2 rounded" onclick="appendToCalc('*')">×</button>
+                            <button class="calc-btn bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600" onclick="appendToCalc('7')">7</button>
+                            <button class="calc-btn bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600" onclick="appendToCalc('8')">8</button>
+                            <button class="calc-btn bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600" onclick="appendToCalc('9')">9</button>
+                            <button class="calc-btn magic-btn text-white py-2 rounded" onclick="appendToCalc('-')">-</button>
+                            <button class="calc-btn bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600" onclick="appendToCalc('4')">4</button>
+                            <button class="calc-btn bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600" onclick="appendToCalc('5')">5</button>
+                            <button class="calc-btn bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600" onclick="appendToCalc('6')">6</button>
+                            <button class="calc-btn magic-btn text-white py-2 rounded" onclick="appendToCalc('+')">+</button>
+                            <button class="calc-btn bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600" onclick="appendToCalc('1')">1</button>
+                            <button class="calc-btn bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600" onclick="appendToCalc('2')">2</button>
+                            <button class="calc-btn bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600" onclick="appendToCalc('3')">3</button>
+                            <button class="calc-btn magic-btn text-white py-2 rounded row-span-2" onclick="calculateResult()" style="grid-row: span 2;">=</button>
+                            <button class="calc-btn bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600" style="grid-column: span 2;" onclick="appendToCalc('0')">0</button>
+                            <button class="calc-btn bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600" onclick="appendToCalc('.')">.</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Color Picker Game -->
+                    <div class="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg interactive-card click-effect fade-in">
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">🎨 Générateur de Couleurs</h3>
+                        <div class="space-y-4">
+                            <div class="w-full h-32 rounded-lg transition-colors duration-500" id="colorDisplay" style="background: linear-gradient(135deg, #5D5CDE, #8B87FF);"></div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-gray-600 dark:text-gray-400">Code couleur:</span>
+                                <span class="font-mono text-sm bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded" id="colorCode">#5D5CDE</span>
+                            </div>
+                            <button class="w-full magic-btn text-white py-2 rounded-lg" onclick="generateRandomColor()">
+                                🎲 Nouvelle Couleur
+                            </button>
+                            <button class="w-full bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white py-2 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600" onclick="copyColor()">
+                                📋 Copier le Code
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Typing Speed Test -->
+                    <div class="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg interactive-card click-effect fade-in">
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">⌨️ Test de Frappe</h3>
+                        <div class="space-y-4">
+                            <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg">
+                                <p class="text-lg" id="typingText">Commencez à taper ce texte pour tester votre vitesse !</p>
+                            </div>
+                            <textarea class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white text-base resize-none" 
+                                      id="typingInput" placeholder="Tapez ici..." rows="3" disabled></textarea>
+                            <div class="flex justify-between text-sm text-gray-600 dark:text-gray-400">
+                                <span>Temps: <span id="typingTime">0</span>s</span>
+                                <span>Vitesse: <span id="typingSpeed">0</span> mots/min</span>
+                            </div>
+                            <button class="w-full magic-btn text-white py-2 rounded-lg" onclick="startTypingTest()">
+                                🚀 Commencer le Test
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Rock Paper Scissors -->
+                    <div class="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg interactive-card click-effect fade-in">
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">✂️ Pierre-Papier-Ciseaux</h3>
+                        <div class="space-y-4">
+                            <div class="flex justify-center space-x-4">
+                                <div class="text-center">
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Vous</p>
+                                    <div class="text-4xl" id="playerChoice">❓</div>
+                                </div>
+                                <div class="text-center flex items-center">
+                                    <div class="text-2xl">VS</div>
+                                </div>
+                                <div class="text-center">
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Ordinateur</p>
+                                    <div class="text-4xl" id="computerChoice">❓</div>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-lg font-semibold" id="gameResult">Choisissez votre coup !</p>
+                            </div>
+                            <div class="grid grid-cols-3 gap-2">
+                                <button class="bg-gray-200 dark:bg-gray-700 text-3xl py-3 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors" onclick="playGame('rock')">🪨</button>
+                                <button class="bg-gray-200 dark:bg-gray-700 text-3xl py-3 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors" onclick="playGame('paper')">📄</button>
+                                <button class="bg-gray-200 dark:bg-gray-700 text-3xl py-3 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors" onclick="playGame('scissors')">✂️</button>
+                            </div>
+                            <div class="text-center text-sm text-gray-600 dark:text-gray-400">
+                                Score: <span id="playerScore">0</span> - <span id="computerScore">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Digital Clock -->
+                    <div class="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg interactive-card fade-in">
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">🕐 Horloge Numérique</h3>
+                        <div class="space-y-4">
+                            <div class="text-center">
+                                <div class="text-3xl font-mono font-bold text-purple-600 dark:text-purple-400" id="digitalClock">00:00:00</div>
+                                <div class="text-lg text-gray-600 dark:text-gray-400" id="digitalDate">1 Janvier 2024</div>
+                            </div>
+                            <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg">
+                                <div class="text-center">
+                                    <div class="text-xl font-mono" id="stopwatch">00:00:00</div>
+                                    <div class="flex justify-center space-x-2 mt-2">
+                                        <button class="bg-green-500 text-white px-3 py-1 rounded text-sm hover:bg-green-600" onclick="startStopwatch()">Start</button>
+                                        <button class="bg-red-500 text-white px-3 py-1 rounded text-sm hover:bg-red-600" onclick="stopStopwatch()">Stop</button>
+                                        <button class="bg-gray-500 text-white px-3 py-1 rounded text-sm hover:bg-gray-600" onclick="resetStopwatch()">Reset</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Code Rain Animation -->
+                    <div class="bg-black p-6 rounded-xl shadow-lg interactive-card fade-in relative overflow-hidden">
+                        <div class="code-rain" id="codeRain"></div>
+                        <h3 class="text-xl font-semibold text-green-400 mb-4 relative z-10">💚 Matrix Code Rain</h3>
+                        <div class="space-y-4 relative z-10">
+                            <p class="text-green-300 text-sm">Effet Matrix inspiré du film !</p>
+                            <button class="w-full bg-green-600 text-black py-2 rounded-lg hover:bg-green-500 font-semibold" onclick="toggleCodeRain()">
+                                <span id="codeRainBtn">▶️ Démarrer la Pluie de Code</span>
+                            </button>
+                            <div class="text-center">
+                                <div class="morphing-shape w-16 h-16 mx-auto opacity-50"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3 class="experience-role">Full Stack Developer</h3>
-                        <h4 class="experience-company">Digital Innovations Inc</h4>
-                        <p class="experience-date">2021 - 2023</p>
-                        <div class="experience-description">
-                            <ul>
-                                <li>Developed and maintained multiple client projects using MERN stack</li>
-                                <li>Collaborated with design teams to implement pixel-perfect UIs</li>
-                                <li>Built RESTful APIs and integrated third-party services</li>
-                                <li>Participated in agile development processes and daily standups</li>
-                            </ul>
+                
+                <!-- Interactive Progress Bars -->
+                <div class="mt-16 fade-in">
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center">🎮 Mes Stats de Jeu</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="text-center">
+                            <div class="relative w-32 h-32 mx-auto mb-4">
+                                <svg class="w-32 h-32" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="45" fill="none" stroke="#e5e7eb" stroke-width="8"/>
+                                    <circle cx="50" cy="50" r="45" fill="none" stroke="#5D5CDE" stroke-width="8" 
+                                            stroke-dasharray="283" stroke-dashoffset="113" class="progress-circle" 
+                                            id="htmlProgress"/>
+                                    <text x="50" y="55" text-anchor="middle" class="text-lg font-bold fill-gray-900 dark:fill-white">75%</text>
+                                </svg>
+                            </div>
+                            <h4 class="text-lg font-semibold text-gray-900 dark:text-white">HTML/CSS</h4>
                         </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3 class="experience-role">Frontend Developer</h3>
-                        <h4 class="experience-company">StartupHub</h4>
-                        <p class="experience-date">2020 - 2021</p>
-                        <div class="experience-description">
-                            <ul>
-                                <li>Created responsive web interfaces using HTML5, CSS3, and JavaScript</li>
-                                <li>Worked closely with UX designers to ensure optimal user experiences</li>
-                                <li>Implemented modern CSS frameworks and preprocessors</li>
-                                <li>Contributed to component library and design system development</li>
-                            </ul>
+                        <div class="text-center">
+                            <div class="relative w-32 h-32 mx-auto mb-4">
+                                <svg class="w-32 h-32" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="45" fill="none" stroke="#e5e7eb" stroke-width="8"/>
+                                    <circle cx="50" cy="50" r="45" fill="none" stroke="#f59e0b" stroke-width="8" 
+                                            stroke-dasharray="283" stroke-dashoffset="140" class="progress-circle" 
+                                            id="jsProgress"/>
+                                    <text x="50" y="55" text-anchor="middle" class="text-lg font-bold fill-gray-900 dark:fill-white">6%</text>
+                                </svg>
+                            </div>
+                            <h4 class="text-lg font-semibold text-gray-900 dark:text-white">JavaScript</h4>
                         </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3 class="experience-role">Junior Web Developer</h3>
-                        <h4 class="experience-company">WebCraft Agency</h4>
-                        <p class="experience-date">2019 - 2020</p>
-                        <div class="experience-description">
-                            <ul>
-                                <li>Assisted in developing client websites and web applications</li>
-                                <li>Learned modern development practices and version control</li>
-                                <li>Participated in client meetings and project planning sessions</li>
-                                <li>Contributed to bug fixes and feature implementations</li>
-                            </ul>
+                        <div class="text-center">
+                            <div class="relative w-32 h-32 mx-auto mb-4">
+                                <svg class="w-32 h-32" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="45" fill="none" stroke="#e5e7eb" stroke-width="8"/>
+                                    <circle cx="50" cy="50" r="45" fill="none" stroke="#3b82f6" stroke-width="8" 
+                                            stroke-dasharray="283" stroke-dashoffset="125" class="progress-circle" 
+                                            id="pythonProgress"/>
+                                    <text x="50" y="55" text-anchor="middle" class="text-lg font-bold fill-gray-900 dark:fill-white">5%</text>
+                                </svg>
+                            </div>
+                            <h4 class="text-lg font-semibold text-gray-900 dark:text-white">Python</h4>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
-        <!-- Certifications Section -->
-        <section id="certifications" class="section" data-aos="fade-up">
-            <h2 class="section-title gradient-text">Certifications & Achievements</h2>
-            <div class="certifications-grid">
-                <div class="cert-card">
-                    <div class="cert-card-inner">
-                        <div class="cert-card-front">
-                            <i class="fas fa-code cert-icon"></i>
-                            <h3 class="cert-title">Full Stack Development</h3>
-                        </div>
-                        <div class="cert-card-back">
-                            <h3 class="cert-org">FreeCodeCamp</h3>
-                            <p class="cert-year">2023</p>
-                            <p class="cert-description">Comprehensive full-stack development certification covering modern web technologies and best practices.</p>
-                        </div>
-                    </div>
+        
+        <!-- Live Coding Preview Section -->
+        <section class="py-20 bg-white dark:bg-gray-900 wave-effect">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 fade-in">
+                    <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">💻 Éditeur de Code Live</h2>
+                    <p class="text-lg text-gray-600 dark:text-gray-300">Testez du code HTML/CSS en temps réel !</p>
                 </div>
-
-                <div class="cert-card">
-                    <div class="cert-card-inner">
-                        <div class="cert-card-front">
-                            <i class="fab fa-react cert-icon"></i>
-                            <h3 class="cert-title">React Developer</h3>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 fade-in">
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">HTML</label>
+                            <textarea id="htmlEditor" class="w-full h-40 p-4 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-900 text-green-400 font-mono text-sm resize-none" 
+                                      placeholder="<h1>Bonjour le monde!</h1>">
+<h1 style="color: #5D5CDE;">Bonjour le monde!</h1>
+<p>Modifiez ce code et voyez le résultat à droite !</p>
+<button onclick="alert('Ça marche!')">Cliquez-moi</button></textarea>
                         </div>
-                        <div class="cert-card-back">
-                            <h3 class="cert-org">Meta</h3>
-                            <p class="cert-year">2023</p>
-                            <p class="cert-description">Advanced React development certification focusing on hooks, context, and modern patterns.</p>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">CSS</label>
+                            <textarea id="cssEditor" class="w-full h-32 p-4 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-900 text-blue-400 font-mono text-sm resize-none" 
+                                      placeholder="body { background: #f0f0f0; }">
+body { 
+    font-family: Arial, sans-serif; 
+    background: linear-gradient(45deg, #5D5CDE, #8B87FF);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+button {
+    background: white;
+    color: #5D5CDE;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}</textarea>
                         </div>
+                        <button class="w-full magic-btn text-white py-3 rounded-lg text-lg font-semibold" onclick="updatePreview()">
+                            🚀 Mettre à Jour la Prévisualisation
+                        </button>
                     </div>
-                </div>
-
-                <div class="cert-card">
-                    <div class="cert-card-inner">
-                        <div class="cert-card-front">
-                            <i class="fab fa-aws cert-icon"></i>
-                            <h3 class="cert-title">AWS Cloud Practitioner</h3>
+                    
+                    <div class="space-y-4">
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Prévisualisation</label>
+                        <div class="border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden">
+                            <iframe id="codePreview" class="w-full h-80 bg-white" src="about:blank"></iframe>
                         </div>
-                        <div class="cert-card-back">
-                            <h3 class="cert-org">Amazon Web Services</h3>
-                            <p class="cert-year">2022</p>
-                            <p class="cert-description">Foundation-level certification for AWS cloud computing services and deployment strategies.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="cert-card">
-                    <div class="cert-card-inner">
-                        <div class="cert-card-front">
-                            <i class="fas fa-tachometer-alt cert-icon"></i>
-                            <h3 class="cert-title">Web Performance</h3>
-                        </div>
-                        <div class="cert-card-back">
-                            <h3 class="cert-org">Google</h3>
-                            <p class="cert-year">2022</p>
-                            <p class="cert-description">Web performance optimization techniques and Core Web Vitals improvement strategies.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="cert-card">
-                    <div class="cert-card-inner">
-                        <div class="cert-card-front">
-                            <i class="fab fa-js-square cert-icon"></i>
-                            <h3 class="cert-title">JavaScript Algorithms</h3>
-                        </div>
-                        <div class="cert-card-back">
-                            <h3 class="cert-org">FreeCodeCamp</h3>
-                            <p class="cert-year">2022</p>
-                            <p class="cert-description">Advanced JavaScript algorithms and data structures certification with practical projects.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="cert-card">
-                    <div class="cert-card-inner">
-                        <div class="cert-card-front">
-                            <i class="fas fa-mobile-alt cert-icon"></i>
-                            <h3 class="cert-title">Responsive Design</h3>
-                        </div>
-                        <div class="cert-card-back">
-                            <h3 class="cert-org">FreeCodeCamp</h3>
-                            <p class="cert-year">2021</p>
-                            <p class="cert-description">Responsive web design principles and mobile-first development methodologies.</p>
+                        <div class="text-center">
+                            <button class="bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white px-4 py-2 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600" onclick="resetCode()">
+                                🔄 Reset Code
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -1604,294 +1396,284 @@
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="section" data-aos="fade-up">
-            <h2 class="section-title gradient-text">Get In Touch</h2>
-            <div class="contact-content">
-                <form class="contact-form" id="contact-form">
-                    <div class="form-group">
-                        <input type="text" class="form-input" placeholder="Your Name" required aria-label="Your Name" id="name">
-                    </div>
-                    <div class="form-group">
-                        <input type="email" class="form-input" placeholder="Your Email" required aria-label="Your Email" id="email">
-                    </div>
-                    <div class="form-group">
-                        <textarea class="form-textarea" placeholder="Your Message" required aria-label="Your Message" id="message"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary form-submit">
-                        <i class="fas fa-paper-plane"></i> Send Message
-                    </button>
-                </form>
+        <section id="contact" class="py-20 bg-gray-50 dark:bg-gray-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 fade-in">
+                    <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Contactez-moi</h2>
+                    <p class="text-lg text-gray-600 dark:text-gray-300">N'hésitez pas à me contacter pour discuter de programmation !</p>
+                </div>
                 
-                <div class="social-links">
-                    <a href="https://github.com" class="social-link" aria-label="GitHub" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="https://linkedin.com" class="social-link" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="mailto:" class="social-link" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                    <a href="https://twitter.com" class="social-link" aria-label="Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+                <div class="max-w-2xl mx-auto">
+                    <form class="space-y-6 fade-in" id="contact-form">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Nom complet</label>
+                                <input type="text" id="name" name="name" required class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email</label>
+                                <input type="email" id="email" name="email" required class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Sujet</label>
+                            <input type="text" id="subject" name="subject" required class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Message</label>
+                            <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-purple-600 text-white px-8 py-3 rounded-lg text-lg font-medium hover:bg-purple-700 transition-colors">
+                            Envoyer le message
+                        </button>
+                    </form>
                 </div>
             </div>
         </section>
-    </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="https://github.com" class="footer-link" aria-label="GitHub" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://linkedin.com" class="footer-link" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://twitter.com" class="footer-link" aria-label="Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+        <!-- Footer -->
+        <footer class="bg-gray-900 text-white py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <div class="flex items-center justify-center space-x-2 mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-r from-purple-600 to-blue-500 rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold text-lg">M</span>
+                        </div>
+                        <span class="font-semibold">Mohamed El Younoussi</span>
+                    </div>
+                    <p class="text-gray-400 mb-8">Étudiant développeur passionné - 3ème année</p>
+                    
+                    <div class="border-t border-gray-800 pt-8">
+                        <p class="text-gray-400">&copy; 2025 Mohamed El Younoussi. Projet scolaire - Tous droits réservés.</p>
+                    </div>
+                </div>
             </div>
-            <p class="footer-text">© 2025 Mohamed El Younoussi | All rights reserved.</p>
-        </div>
-    </footer>
-
-    <!-- Project Modal -->
-    <div class="modal" id="projectModal">
-        <div class="modal-content">
-            <button class="modal-close" id="modalClose">&times;</button>
-            <h2 id="modalTitle"></h2>
-            <img id="modalImage" src="" alt="" style="width: 100%; height: 200px; object-fit: cover; border-radius: var(--border-radius); margin: 1rem 0;">
-            <p id="modalDescription"></p>
-            <div id="modalTech" class="project-tech" style="margin: 1rem 0;"></div>
-            <div class="project-buttons">
-                <a href="#" id="modalLive" class="btn btn-primary">Live Demo</a>
-                <a href="#" id="modalCode" class="btn btn-secondary">Source Code</a>
-            </div>
-        </div>
+        </footer>
     </div>
 
-    <!-- AOS Library for Scroll Animations -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
     <script>
-        // ===== INITIALIZE AOS ANIMATIONS =====
-        AOS.init({
-            duration: 1000,
-            once: true,
-            offset: 100
-        });
-
-        // ===== LOADING ANIMATION =====
-        window.addEventListener('load', () => {
-            const loader = document.getElementById('loader');
-            setTimeout(() => {
-                loader.style.opacity = '0';
-                setTimeout(() => {
-                    loader.style.display = 'none';
-                }, 500);
-            }, 1500);
-        });
-
-        // ===== PARTICLE ANIMATION =====
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 30;
+        // Dark mode detection and manual toggle
+        function initializeTheme() {
+            // Check for saved preference or default to system preference
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
             
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                
-                // Random size between 3 and 8 pixels
-                const size = Math.random() * 5 + 3;
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                
-                // Random position
-                particle.style.left = `${Math.random() * 100}%`;
-                particle.style.top = `${Math.random() * 100}%`;
-                
-                // Random animation delay
-                particle.style.animationDelay = `${Math.random() * 15}s`;
-                
-                particlesContainer.appendChild(particle);
-            }
-        }
-
-        // ===== TYPING ANIMATION =====
-        const typingText = document.getElementById('typing-text');
-        const texts = [
-            'Web Developer',
-            'Creative Problem Solver', 
-            'Builder of Modern Experiences',
-            'Full Stack Developer'
-        ];
-        let textIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-
-        function typeText() {
-            const currentText = texts[textIndex];
-            
-            if (isDeleting) {
-                typingText.textContent = currentText.substring(0, charIndex - 1);
-                charIndex--;
+            if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+                document.documentElement.classList.add('dark');
             } else {
-                typingText.textContent = currentText.substring(0, charIndex + 1);
-                charIndex++;
+                document.documentElement.classList.remove('dark');
             }
-
-            if (!isDeleting && charIndex === currentText.length) {
-                setTimeout(() => isDeleting = true, 2000);
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                textIndex = (textIndex + 1) % texts.length;
-            }
-
-            const typeSpeed = isDeleting ? 50 : 100;
-            setTimeout(typeText, typeSpeed);
         }
 
-        // ===== MOBILE NAVIGATION =====
-        const hamburger = document.querySelector('.hamburger');
-        const navMenu = document.querySelector('.nav-menu');
+        // Initialize theme on page load
+        initializeTheme();
 
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (!localStorage.getItem('theme')) {
+                if (event.matches) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+            }
         });
 
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
+        // Theme toggle function
+        function toggleTheme() {
+            const isDark = document.documentElement.classList.contains('dark');
+            if (isDark) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Add event listeners for theme toggle buttons
+        document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+        document.getElementById('theme-toggle-mobile').addEventListener('click', toggleTheme);
+
+        // AI Assistant Functions
+        function openAIModal() {
+            document.getElementById('ai-modal').classList.remove('hidden');
+            document.getElementById('ai-input').focus();
+        }
+
+        function closeAIModal() {
+            document.getElementById('ai-modal').classList.add('hidden');
+        }
+
+        function addMessage(content, isUser = false) {
+            const messagesContainer = document.getElementById('ai-messages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'ai-message flex items-start space-x-2';
+            
+            if (isUser) {
+                messageDiv.innerHTML = `
+                    <div class="w-6 h-6 bg-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-user text-white text-xs"></i>
+                    </div>
+                    <div class="bg-purple-100 dark:bg-purple-900 rounded-lg p-3 max-w-xs">
+                        <p class="text-sm text-gray-900 dark:text-white">${content}</p>
+                    </div>
+                `;
+            } else {
+                messageDiv.innerHTML = `
+                    <div class="w-6 h-6 bg-green-600 rounded-full flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-robot text-white text-xs"></i>
+                    </div>
+                    <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-3 max-w-xs">
+                        <p class="text-sm text-gray-900 dark:text-white">${content}</p>
+                    </div>
+                `;
+            }
+            
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function addLoadingMessage() {
+            const messagesContainer = document.getElementById('ai-messages');
+            const messageDiv = document.createElement('div');
+            messageDiv.id = 'loading-message';
+            messageDiv.className = 'ai-message flex items-start space-x-2';
+            messageDiv.innerHTML = `
+                <div class="w-6 h-6 bg-green-600 rounded-full flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-robot text-white text-xs"></i>
+                </div>
+                <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-3 max-w-xs">
+                    <p class="text-sm text-gray-900 dark:text-white">
+                        <i class="fas fa-spinner fa-spin mr-2"></i>En train de réfléchir...
+                    </p>
+                </div>
+            `;
+            
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function removeLoadingMessage() {
+            const loadingMessage = document.getElementById('loading-message');
+            if (loadingMessage) {
+                loadingMessage.remove();
+            }
+        }
+
+        // Register AI response handler
+        if (window.Poe && window.Poe.registerHandler) {
+            window.Poe.registerHandler("ai-assistant-handler", (result) => {
+                const msg = result.responses[0];
+                
+                if (msg.status === "error") {
+                    removeLoadingMessage();
+                    addMessage("Désolé, une erreur s'est produite. Veuillez réessayer.");
+                } else if (msg.status === "incomplete") {
+                    // Update the loading message with partial content
+                    const loadingMessage = document.getElementById('loading-message');
+                    if (loadingMessage && msg.content) {
+                        removeLoadingMessage();
+                        addMessage(msg.content);
+                    }
+                } else if (msg.status === "complete") {
+                    removeLoadingMessage();
+                    addMessage(msg.content);
+                }
             });
-        });
+        }
 
-        // ===== PROJECT MODAL FUNCTIONALITY =====
-        const projectModal = document.getElementById('projectModal');
-        const modalClose = document.getElementById('modalClose');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalImage = document.getElementById('modalImage');
-        const modalDescription = document.getElementById('modalDescription');
-        const modalTech = document.getElementById('modalTech');
-        const modalLive = document.getElementById('modalLive');
-        const modalCode = document.getElementById('modalCode');
+        async function sendAIMessage() {
+            const input = document.getElementById('ai-input');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            // Add user message to chat
+            addMessage(message, true);
+            input.value = '';
+            
+            // Add loading message
+            addLoadingMessage();
+            
+            try {
+                if (window.Poe && window.Poe.sendUserMessage) {
+                    await window.Poe.sendUserMessage(`@Claude-Sonnet-4 ${message}`, {
+                        handler: "ai-assistant-handler",
+                        stream: true,
+                        openChat: false
+                    });
+                } else {
+                    // Fallback for testing without Poe API
+                    setTimeout(() => {
+                        removeLoadingMessage();
+                        addMessage("Je suis un assistant AI de démonstration ! Pour une vraie expérience, utilisez-moi dans l'environnement Poe. Votre question était très intéressante !");
+                    }, 1500);
+                }
+            } catch (error) {
+                removeLoadingMessage();
+                addMessage("Désolé, je ne peux pas répondre pour le moment. Veuillez réessayer plus tard.");
+            }
+        }
 
-        // Project data
-        const projects = [
-            {
-                title: "E-Commerce Platform",
-                image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-                description: "Full-stack e-commerce solution with React, Node.js, and MongoDB. Features include user authentication, payment integration, and admin dashboard.",
-                tech: ["React", "Node.js", "MongoDB", "Stripe"],
-                live: "#",
-                code: "#"
-            },
-            {
-                title: "Task Management App",
-                image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-                description: "Modern task management application with real-time updates, drag & drop functionality, and team collaboration features.",
-                tech: ["Vue.js", "Firebase", "CSS3", "WebSockets"],
-                live: "#",
-                code: "#"
-            },
-            // Add other projects here...
-        ];
+        // AI Assistant Event Listeners
+        document.getElementById('ai-assistant-btn').addEventListener('click', openAIModal);
+        document.getElementById('ai-assistant-btn-mobile').addEventListener('click', openAIModal);
+        document.getElementById('close-ai-modal').addEventListener('click', closeAIModal);
+        document.getElementById('send-ai-message').addEventListener('click', sendAIMessage);
 
-        // Open modal when project card is clicked
-        document.querySelectorAll('.project-card').forEach((card, index) => {
-            card.addEventListener('click', () => {
-                const project = projects[index];
-                
-                modalTitle.textContent = project.title;
-                modalImage.src = project.image;
-                modalImage.alt = project.title;
-                modalDescription.textContent = project.description;
-                
-                // Clear previous tech tags
-                modalTech.innerHTML = '';
-                
-                // Add tech tags
-                project.tech.forEach(tech => {
-                    const techTag = document.createElement('span');
-                    techTag.classList.add('tech-tag');
-                    techTag.textContent = tech;
-                    modalTech.appendChild(techTag);
-                });
-                
-                // Set links
-                modalLive.href = project.live;
-                modalCode.href = project.code;
-                
-                // Show modal
-                projectModal.classList.add('open');
-            });
-        });
-
-        // Close modal
-        modalClose.addEventListener('click', () => {
-            projectModal.classList.remove('open');
+        document.getElementById('ai-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendAIMessage();
+            }
         });
 
         // Close modal when clicking outside
-        projectModal.addEventListener('click', (e) => {
-            if (e.target === projectModal) {
-                projectModal.classList.remove('open');
+        document.getElementById('ai-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeAIModal();
             }
         });
 
-        // ===== SKILL BARS ANIMATION =====
-        function animateSkillBars() {
-            const skillBars = document.querySelectorAll('.skill-progress-bar');
-            skillBars.forEach(bar => {
-                const width = bar.getAttribute('data-width');
+        // Loading screen logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const loadingScreen = document.getElementById('loadingScreen');
+            const mainContent = document.getElementById('mainContent');
+            const loadingText = document.getElementById('loadingText');
+
+            // Update loading text
+            setTimeout(() => {
+                loadingText.textContent = 'Chargement des projets...';
+            }, 1200);
+
+            setTimeout(() => {
+                loadingText.textContent = 'Presque prêt...';
+            }, 2000);
+
+            // Hide loading screen and show main content
+            setTimeout(() => {
+                loadingScreen.classList.add('hidden');
+                mainContent.classList.add('visible');
+                
+                // Start animations after loading
                 setTimeout(() => {
-                    bar.style.width = width + '%';
-                }, 200);
-            });
-        }
-
-        // ===== ACTIVE NAVIGATION LINK =====
-        function updateActiveNavLink() {
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('.nav-link');
-            
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 100;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) {
-                    link.classList.add('active');
-                }
-            });
-        }
-
-        // ===== NAVBAR SCROLL EFFECT =====
-        function updateNavbarOnScroll() {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        }
-
-        // ===== BACK TO TOP BUTTON =====
-        function updateBackToTopButton() {
-            const backToTopBtn = document.getElementById('backToTop');
-            if (window.scrollY > 500) {
-                backToTopBtn.classList.add('visible');
-            } else {
-                backToTopBtn.classList.remove('visible');
-            }
-        }
-
-        // Back to top functionality
-        document.getElementById('backToTop').addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+                    animateCounters();
+                    initScrollAnimations();
+                }, 500);
+            }, 3500);
         });
 
-        // ===== SMOOTH SCROLLING FOR ANCHOR LINKS =====
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1901,117 +1683,681 @@
                         behavior: 'smooth',
                         block: 'start'
                     });
+                    // Close mobile menu if open
+                    document.getElementById('mobile-menu').classList.add('hidden');
                 }
             });
         });
 
-        // ===== CONTACT FORM SUBMISSION =====
+        // Animated counters
+        function animateCounters() {
+            const counters = [
+                { id: 'projects-count', target: 6 },
+                { id: 'experience-count', target: 1 },
+                { id: 'languages-count', target: 4 },
+                { id: 'hours-count', target: 150 }
+            ];
+
+            counters.forEach(counter => {
+                const element = document.getElementById(counter.id);
+                let current = 0;
+                const increment = counter.target / 30;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= counter.target) {
+                        element.textContent = counter.target + (counter.id === 'hours-count' ? 'h' : '');
+                        clearInterval(timer);
+                    } else {
+                        element.textContent = Math.floor(current) + (counter.id === 'hours-count' ? 'h' : '');
+                    }
+                }, 100);
+            });
+        }
+
+        // Scroll animations
+        function initScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        
+                        // Animate skill bars when about section is visible
+                        if (entry.target.id === 'about') {
+                            setTimeout(() => {
+                                document.querySelectorAll('.skill-bar').forEach(bar => {
+                                    const width = bar.getAttribute('data-width');
+                                    bar.style.width = width + '%';
+                                });
+                            }, 500);
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Observer for about section
+            const aboutSection = document.getElementById('about');
+            if (aboutSection) {
+                observer.observe(aboutSection);
+            }
+        }
+
+        // Contact form handling
         document.getElementById('contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Get form data
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
+            // Show success message
+            showSuccessMessage('Message envoyé avec succès ! Merci pour votre message.');
             
-            // Simulate form submission
-            const submitBtn = this.querySelector('.form-submit');
-            const originalText = submitBtn.innerHTML;
-            
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-            submitBtn.disabled = true;
-            
-            // Simulate API call
-            setTimeout(() => {
-                // In a real application, you would send the data to a server here
-                console.log('Form submitted:', { name, email, message });
-                
-                submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
-                
-                setTimeout(() => {
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                    this.reset();
-                }, 2000);
-            }, 1500);
+            // Reset form
+            this.reset();
         });
 
-        // ===== CV DOWNLOAD SIMULATION =====
-        document.getElementById('downloadCV').addEventListener('click', function(e) {
-            e.preventDefault();
+        // Custom success message function
+        function showSuccessMessage(message) {
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+            modal.innerHTML = `
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg max-w-sm w-full mx-4">
+                    <div class="flex items-center mb-4">
+                        <div class="w-8 h-8 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-check text-green-600 dark:text-green-400"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Succès</h3>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">${message}</p>
+                    <button class="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition-colors" onclick="this.closest('.fixed').remove()">
+                        Fermer
+                    </button>
+                </div>
+            `;
+            document.body.appendChild(modal);
             
-            const downloadBtn = this;
-            const originalText = downloadBtn.innerHTML;
-            
-            downloadBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Preparing...';
-            
-            // Simulate download process
+            // Auto-remove after 5 seconds
             setTimeout(() => {
-                downloadBtn.innerHTML = '<i class="fas fa-check"></i> CV Downloaded!';
-                
-                setTimeout(() => {
-                    downloadBtn.innerHTML = originalText;
-                    
-                    // In a real application, this would trigger an actual download
-                    // For now, we'll just open a print dialog
-                    window.print();
-                }, 1500);
-            }, 1000);
-        });
-
-        // ===== SCROLL EVENT LISTENERS =====
-        let ticking = false;
-
-        function updateOnScroll() {
-            updateActiveNavLink();
-            updateNavbarOnScroll();
-            updateBackToTopButton();
-            ticking = false;
+                if (modal.parentNode) {
+                    modal.remove();
+                }
+            }, 5000);
         }
 
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                requestAnimationFrame(updateOnScroll);
-                ticking = true;
+        // Calculator Functions
+        let calcExpression = '';
+        
+        function appendToCalc(value) {
+            const display = document.getElementById('calcDisplay');
+            if (display.value === '0' && value !== '.') {
+                display.value = value;
+            } else {
+                display.value += value;
+            }
+            calcExpression = display.value;
+        }
+        
+        function clearCalc() {
+            document.getElementById('calcDisplay').value = '0';
+            calcExpression = '';
+        }
+        
+        function deleteLast() {
+            const display = document.getElementById('calcDisplay');
+            if (display.value.length > 1) {
+                display.value = display.value.slice(0, -1);
+            } else {
+                display.value = '0';
+            }
+            calcExpression = display.value;
+        }
+        
+        function calculateResult() {
+            const display = document.getElementById('calcDisplay');
+            try {
+                const result = eval(display.value.replace('×', '*'));
+                display.value = result;
+                calcExpression = result.toString();
+            } catch (error) {
+                display.value = 'Erreur';
+                setTimeout(() => {
+                    clearCalc();
+                }, 1500);
+            }
+        }
+
+        // Color Generator Functions
+        function generateRandomColor() {
+            const colors = [
+                '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7',
+                '#DDA0DD', '#98D8C8', '#F7DC6F', '#BB8FCE', '#85C1E9',
+                '#F8C471', '#82E0AA', '#F1948A', '#85C1E9', '#D7BDE2'
+            ];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            const colorDisplay = document.getElementById('colorDisplay');
+            const colorCode = document.getElementById('colorCode');
+            
+            colorDisplay.style.background = `linear-gradient(135deg, ${randomColor}, ${adjustBrightness(randomColor, -20)})`;
+            colorCode.textContent = randomColor;
+        }
+        
+        function adjustBrightness(hex, percent) {
+            const num = parseInt(hex.replace('#', ''), 16);
+            const amt = Math.round(2.55 * percent);
+            const R = (num >> 16) + amt;
+            const G = (num >> 8 & 0x00FF) + amt;
+            const B = (num & 0x0000FF) + amt;
+            return '#' + (0x1000000 + (R < 255 ? R < 1 ? 0 : R : 255) * 0x10000 +
+                (G < 255 ? G < 1 ? 0 : G : 255) * 0x100 +
+                (B < 255 ? B < 1 ? 0 : B : 255)).toString(16).slice(1);
+        }
+        
+        function copyColor() {
+            const colorCode = document.getElementById('colorCode').textContent;
+            navigator.clipboard.writeText(colorCode).then(() => {
+                showSuccessMessage(`Couleur ${colorCode} copiée dans le presse-papiers !`);
+            });
+        }
+
+        // Typing Test Functions
+        let typingStartTime;
+        let typingInterval;
+        const typingTexts = [
+            "La programmation est l'art de dire à un ordinateur ce qu'il doit faire.",
+            "Le code est poésie que les machines peuvent lire et exécuter.",
+            "Chaque bug est une opportunité d'apprendre quelque chose de nouveau.",
+            "L'informatique est la science qui nous permet de créer l'avenir."
+        ];
+        
+        function startTypingTest() {
+            const textElement = document.getElementById('typingText');
+            const inputElement = document.getElementById('typingInput');
+            const randomText = typingTexts[Math.floor(Math.random() * typingTexts.length)];
+            
+            textElement.textContent = randomText;
+            inputElement.value = '';
+            inputElement.disabled = false;
+            inputElement.focus();
+            
+            typingStartTime = Date.now();
+            document.getElementById('typingTime').textContent = '0';
+            document.getElementById('typingSpeed').textContent = '0';
+            
+            typingInterval = setInterval(updateTypingStats, 100);
+            
+            inputElement.addEventListener('input', checkTypingCompletion);
+        }
+        
+        function updateTypingStats() {
+            const elapsed = (Date.now() - typingStartTime) / 1000;
+            document.getElementById('typingTime').textContent = elapsed.toFixed(1);
+            
+            const wordsTyped = document.getElementById('typingInput').value.split(' ').length;
+            const wpm = Math.round((wordsTyped / elapsed) * 60);
+            document.getElementById('typingSpeed').textContent = wpm || 0;
+        }
+        
+        function checkTypingCompletion() {
+            const targetText = document.getElementById('typingText').textContent;
+            const typedText = document.getElementById('typingInput').value;
+            
+            if (typedText === targetText) {
+                clearInterval(typingInterval);
+                document.getElementById('typingInput').disabled = true;
+                showSuccessMessage('Test de frappe terminé ! Excellent travail !');
+            }
+        }
+
+        // Rock Paper Scissors Game
+        let playerScore = 0;
+        let computerScore = 0;
+        
+        function playGame(playerChoice) {
+            const choices = ['rock', 'paper', 'scissors'];
+            const computerChoice = choices[Math.floor(Math.random() * 3)];
+            
+            const emojis = {
+                rock: '🪨',
+                paper: '📄',
+                scissors: '✂️'
+            };
+            
+            document.getElementById('playerChoice').textContent = emojis[playerChoice];
+            document.getElementById('computerChoice').textContent = emojis[computerChoice];
+            
+            let result = '';
+            if (playerChoice === computerChoice) {
+                result = 'Égalité !';
+            } else if (
+                (playerChoice === 'rock' && computerChoice === 'scissors') ||
+                (playerChoice === 'paper' && computerChoice === 'rock') ||
+                (playerChoice === 'scissors' && computerChoice === 'paper')
+            ) {
+                result = 'Vous gagnez !';
+                playerScore++;
+            } else {
+                result = 'L\'ordinateur gagne !';
+                computerScore++;
+            }
+            
+            document.getElementById('gameResult').textContent = result;
+            document.getElementById('playerScore').textContent = playerScore;
+            document.getElementById('computerScore').textContent = computerScore;
+        }
+
+        // Digital Clock Functions
+        function updateClock() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('fr-FR');
+            const dateString = now.toLocaleDateString('fr-FR', { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+            
+            document.getElementById('digitalClock').textContent = timeString;
+            document.getElementById('digitalDate').textContent = dateString;
+        }
+        
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // Stopwatch Functions
+        let stopwatchStartTime = 0;
+        let stopwatchElapsed = 0;
+        let stopwatchInterval;
+        let stopwatchRunning = false;
+        
+        function startStopwatch() {
+            if (!stopwatchRunning) {
+                stopwatchStartTime = Date.now() - stopwatchElapsed;
+                stopwatchInterval = setInterval(updateStopwatch, 10);
+                stopwatchRunning = true;
+            }
+        }
+        
+        function stopStopwatch() {
+            if (stopwatchRunning) {
+                clearInterval(stopwatchInterval);
+                stopwatchRunning = false;
+            }
+        }
+        
+        function resetStopwatch() {
+            clearInterval(stopwatchInterval);
+            stopwatchElapsed = 0;
+            stopwatchRunning = false;
+            document.getElementById('stopwatch').textContent = '00:00:00';
+        }
+        
+        function updateStopwatch() {
+            stopwatchElapsed = Date.now() - stopwatchStartTime;
+            const time = new Date(stopwatchElapsed);
+            const minutes = time.getUTCMinutes().toString().padStart(2, '0');
+            const seconds = time.getUTCSeconds().toString().padStart(2, '0');
+            const milliseconds = Math.floor(time.getUTCMilliseconds() / 10).toString().padStart(2, '0');
+            document.getElementById('stopwatch').textContent = `${minutes}:${seconds}:${milliseconds}`;
+        }
+
+        // Code Rain Functions
+        let codeRainActive = false;
+        let codeRainInterval;
+        
+        function toggleCodeRain() {
+            const btn = document.getElementById('codeRainBtn');
+            const container = document.getElementById('codeRain');
+            
+            if (!codeRainActive) {
+                codeRainActive = true;
+                btn.textContent = '⏸️ Arrêter la Pluie';
+                codeRainInterval = setInterval(createCodeChar, 100);
+            } else {
+                codeRainActive = false;
+                btn.textContent = '▶️ Démarrer la Pluie de Code';
+                clearInterval(codeRainInterval);
+                container.innerHTML = '';
+            }
+        }
+        
+        function createCodeChar() {
+            const container = document.getElementById('codeRain');
+            const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+            const char = document.createElement('div');
+            char.className = 'code-char';
+            char.textContent = chars[Math.floor(Math.random() * chars.length)];
+            char.style.left = Math.random() * 100 + '%';
+            char.style.animationDuration = (Math.random() * 2 + 1) + 's';
+            
+            container.appendChild(char);
+            
+            setTimeout(() => {
+                if (char.parentNode) {
+                    char.remove();
+                }
+            }, 3000);
+        }
+
+        // Live Code Editor Functions
+        function updatePreview() {
+            const html = document.getElementById('htmlEditor').value;
+            const css = document.getElementById('cssEditor').value;
+            const iframe = document.getElementById('codePreview');
+            
+            const code = `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <style>${css}</style>
+                </head>
+                <body>
+                    ${html}
+                </body>
+                </html>
+            `;
+            
+            iframe.src = 'data:text/html;charset=utf-8,' + encodeURIComponent(code);
+        }
+        
+        function resetCode() {
+            document.getElementById('htmlEditor').value = `<h1 style="color: #5D5CDE;">Bonjour le monde!</h1>
+<p>Modifiez ce code et voyez le résultat à droite !</p>
+<button onclick="alert('Ça marche!')">Cliquez-moi</button>`;
+            
+            document.getElementById('cssEditor').value = `body { 
+    font-family: Arial, sans-serif; 
+    background: linear-gradient(45deg, #5D5CDE, #8B87FF);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+button {
+    background: white;
+    color: #5D5CDE;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}`;
+            updatePreview();
+        }
+        
+        // Auto-update preview initially
+        setTimeout(updatePreview, 1000);
+
+        // Ripple Effect for Interactive Cards
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.click-effect')) {
+                const card = e.target.closest('.click-effect');
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const ripple = document.createElement('div');
+                ripple.className = 'ripple';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                
+                card.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
             }
         });
 
-        // ===== INITIALIZE =====
-        document.addEventListener('DOMContentLoaded', () => {
-            createParticles();
-            updateActiveNavLink();
-            updateNavbarOnScroll();
-            updateBackToTopButton();
-            
-            // Start typing animation after a delay
-            setTimeout(typeText, 1000);
-            
-            // Animate skill bars when skills section is in view
-            const skillsSection = document.getElementById('skills');
-            const skillsObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        animateSkillBars();
-                        skillsObserver.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.3 });
-            
-            skillsObserver.observe(skillsSection);
+        // Parallax Effect on Scroll
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const parallaxBg = document.querySelector('.parallax-bg');
+            if (parallaxBg) {
+                parallaxBg.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
         });
 
-        // ===== PERFORMANCE OPTIMIZATION =====
-        // Preload critical resources
-        const link = document.createElement('link');
-        link.rel = 'preconnect';
-        link.href = 'https://fonts.googleapis.com';
-        document.head.appendChild(link);
+        // Add Particles to Background
+        function createParticles() {
+            const heroSection = document.getElementById('accueil');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 2) + 's';
+                heroSection.appendChild(particle);
+            }
+        }
+        
+        setTimeout(createParticles, 4000);
 
-        const link2 = document.createElement('link');
-        link2.rel = 'preconnect';
-        link2.href = 'https://fonts.gstatic.com';
-        link2.crossOrigin = '';
-        document.head.appendChild(link2);
+        // New Button Functions
+        
+        // Download CV Function
+        document.getElementById('download-cv-btn').addEventListener('click', function() {
+            // Create a demo CV content
+            const cvContent = `
+                Mohamed El Younoussi - CV
+                ========================
+                
+                Étudiant Développeur Passionné
+                3ème année au Collège Ibn Khaldoun, Rabat
+                
+                COMPÉTENCES TECHNIQUES:
+                • HTML5/CSS3 (Niveau Intermédiaire)
+                • JavaScript (Débutant+)
+                • Python (Débutant+)
+                • Git/GitHub (Débutant)
+                
+                PROJETS RÉALISÉS:
+                1. Portfolio Personnel - HTML/CSS/JS
+                2. Calculatrice Web - Interface moderne
+                3. Jeu Pierre-Papier-Ciseaux - Python
+                4. Quiz Interactif - En cours
+                5. Chronomètre Digital - Terminé
+                
+                OBJECTIFS:
+                • École d'ingénieur en informatique
+                • Développeur Full-Stack
+                • Continuer l'apprentissage quotidien
+                
+                Contact: portfolio-mohamed@example.com
+            `;
+            
+            const blob = new Blob([cvContent], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Mohamed_El_Younoussi_CV.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+            
+            showSuccessMessage('CV téléchargé avec succès !');
+        });
+
+        // Social Share Functions
+        function shareOnSocial(platform) {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent('Découvrez le portfolio de Mohamed El Younoussi - Étudiant développeur passionné !');
+            
+            let shareUrl = '';
+            
+            switch(platform) {
+                case 'facebook':
+                    shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+                    break;
+                case 'twitter':
+                    shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${text}`;
+                    break;
+                case 'linkedin':
+                    shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
+                    break;
+            }
+            
+            if (shareUrl) {
+                window.open(shareUrl, '_blank', 'width=600,height=400');
+            }
+        }
+
+        function copyPortfolioLink() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                showSuccessMessage('Lien du portfolio copié dans le presse-papiers !');
+            }).catch(() => {
+                showSuccessMessage('Impossible de copier le lien automatiquement.');
+            });
+        }
+
+        // Quick Action Buttons
+        function refreshPage() {
+            window.location.reload();
+        }
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        function printPage() {
+            window.print();
+        }
+
+        // Color Theme Changer
+        function changeThemeColor(color) {
+            const root = document.documentElement;
+            root.style.setProperty('--primary-color', color);
+            
+            // Update all elements with the primary color
+            document.querySelectorAll('.bg-purple-600, .text-purple-600, .border-purple-600').forEach(el => {
+                el.style.background = color;
+                el.style.color = color;
+                el.style.borderColor = color;
+            });
+            
+            showSuccessMessage(`Thème changé vers ${color} !`);
+        }
+
+        // Navigation Helper Functions
+        function goToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        // Project Demo Functions
+        function launchDemo(projectName) {
+            let demoContent = '';
+            
+            switch(projectName) {
+                case 'calculator':
+                    demoContent = 'Lancement de la démo calculatrice...';
+                    break;
+                case 'game':
+                    demoContent = 'Lancement du jeu Pierre-Papier-Ciseaux...';
+                    break;
+                case 'quiz':
+                    demoContent = 'Le quiz est en développement...';
+                    break;
+                default:
+                    demoContent = 'Démo non disponible pour ce projet.';
+            }
+            
+            showSuccessMessage(demoContent);
+        }
+
+        // Add scroll to top button
+        function addScrollToTopButton() {
+            const scrollBtn = document.createElement('button');
+            scrollBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+            scrollBtn.className = 'fixed bottom-6 right-6 bg-purple-600 text-white p-3 rounded-full shadow-lg hover:bg-purple-700 transition-all duration-300 z-40 opacity-0 pointer-events-none';
+            scrollBtn.id = 'scroll-to-top';
+            scrollBtn.title = 'Retour en haut';
+            scrollBtn.addEventListener('click', scrollToTop);
+            
+            document.body.appendChild(scrollBtn);
+            
+            // Show/hide button based on scroll position
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    scrollBtn.classList.remove('opacity-0', 'pointer-events-none');
+                    scrollBtn.classList.add('opacity-100');
+                } else {
+                    scrollBtn.classList.add('opacity-0', 'pointer-events-none');
+                    scrollBtn.classList.remove('opacity-100');
+                }
+            });
+        }
+
+        // Add floating action buttons
+        function addFloatingActionButtons() {
+            const fabContainer = document.createElement('div');
+            fabContainer.className = 'fixed bottom-6 left-6 flex flex-col space-y-3 z-40';
+            
+            const fabButtons = [
+                { icon: 'fas fa-palette', title: 'Changer couleur', action: () => changeThemeColor('#' + Math.floor(Math.random()*16777215).toString(16)) },
+                { icon: 'fas fa-refresh', title: 'Actualiser', action: refreshPage },
+                { icon: 'fas fa-print', title: 'Imprimer', action: printPage },
+                { icon: 'fas fa-heart', title: 'J\'aime', action: () => showSuccessMessage('Merci pour votre soutien ! ❤️') }
+            ];
+            
+            fabButtons.forEach(btn => {
+                const button = document.createElement('button');
+                button.innerHTML = `<i class="${btn.icon}"></i>`;
+                button.className = 'bg-gray-800 text-white p-3 rounded-full shadow-lg hover:bg-gray-700 transition-all duration-300 transform hover:scale-110';
+                button.title = btn.title;
+                button.addEventListener('click', btn.action);
+                fabContainer.appendChild(button);
+            });
+            
+            document.body.appendChild(fabContainer);
+        }
+
+        // Add quick navigation buttons
+        function addQuickNavButtons() {
+            const quickNav = document.createElement('div');
+            quickNav.className = 'fixed top-1/2 right-4 transform -translate-y-1/2 flex flex-col space-y-2 z-30';
+            
+            const sections = [
+                { id: 'accueil', icon: 'fas fa-home', title: 'Accueil' },
+                { id: 'about', icon: 'fas fa-user', title: 'À propos' },
+                { id: 'competences', icon: 'fas fa-code', title: 'Compétences' },
+                { id: 'projets', icon: 'fas fa-folder-open', title: 'Projets' },
+                { id: 'playground', icon: 'fas fa-gamepad', title: 'Zone Interactive' },
+                { id: 'contact', icon: 'fas fa-envelope', title: 'Contact' }
+            ];
+            
+            sections.forEach(section => {
+                const button = document.createElement('button');
+                button.innerHTML = `<i class="${section.icon}"></i>`;
+                button.className = 'bg-white dark:bg-gray-800 text-gray-800 dark:text-white p-2 rounded-full shadow-md hover:bg-purple-600 hover:text-white transition-all duration-300 w-10 h-10 flex items-center justify-center';
+                button.title = section.title;
+                button.addEventListener('click', () => goToSection(section.id));
+                quickNav.appendChild(button);
+            });
+            
+            document.body.appendChild(quickNav);
+        }
+
+        // Initialize all new features
+        setTimeout(() => {
+            addScrollToTopButton();
+            addFloatingActionButtons();
+            addQuickNavButtons();
+        }, 2000);
     </script>
 </body>
 </html>
