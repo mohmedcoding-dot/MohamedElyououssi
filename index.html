@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mohamed El Younoussi - Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
         
@@ -566,6 +566,25 @@
                 font-size: 1.1rem;
             }
         }
+        .memory-card {
+    height: 60px;
+    background: linear-gradient(135deg, #e91e63, #ff9800);
+    border-radius: 6px;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.memory-card.flipped {
+    transform: rotateY(180deg);
+}
+
+.memory-card.matched {
+    transform: rotateY(180deg) scale(0.9);
+    opacity: 0.7;
+    cursor: default;
+}
     </style>
 </head>
 <body class="scroll-smooth">
@@ -697,58 +716,27 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
                 <div class="floating mb-8">
                     <div class="w-32 h-32 mx-auto bg-gradient-to-r from-purple-600 to-blue-500 rounded-full flex items-center justify-center shadow-2xl">
-                        <i class="fas fa-code text-white text-4xl"></i>
+                        <span class="text-white font-bold text-4xl">M</span>
                     </div>
                 </div>
                 
                 <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 fade-in">
-                    <i class="fas fa-user-graduate mr-4"></i>Mohamed El Younoussi
+                    Mohamed El Younoussi
                 </h1>
                 <p class="text-xl md:text-2xl text-gray-300 mb-8 fade-in">
-                    <i class="fas fa-laptop-code mr-2"></i>Étudiant Développeur Passionné
+                    Étudiant Développeur Passionné
                 </p>
                 <p class="text-lg text-gray-400 mb-12 max-w-2xl mx-auto fade-in">
                     Étudiant de 3ème année avec 1 an d'expérience en programmation. Passionné par le développement web et les nouvelles technologies.
                 </p>
                 
-                <!-- Action Buttons -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 fade-in">
-                    <a href="#projets" class="bg-purple-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-purple-700 transition-colors inline-flex items-center justify-center">
-                        <i class="fas fa-folder-open mr-2"></i>
-                        <span class="hidden md:inline">Mes Projets</span>
-                        <span class="md:hidden">Projets</span>
+                <div class="space-x-4 fade-in">
+                    <a href="#projets" class="bg-purple-600 text-white px-8 py-3 rounded-lg text-lg font-medium hover:bg-purple-700 transition-colors inline-block">
+                        Voir mes projets
                     </a>
-                    <a href="#contact" class="border-2 border-white text-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-gray-900 transition-colors inline-flex items-center justify-center">
-                        <i class="fas fa-envelope mr-2"></i>
-                        <span class="hidden md:inline">Contact</span>
-                        <span class="md:hidden">Contact</span>
+                    <a href="#contact" class="border-2 border-white text-white px-8 py-3 rounded-lg text-lg font-medium hover:bg-white hover:text-gray-900 transition-colors inline-block">
+                        Me contacter
                     </a>
-                    <button id="download-cv-btn" class="bg-green-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-green-700 transition-colors inline-flex items-center justify-center">
-                        <i class="fas fa-download mr-2"></i>
-                        <span class="hidden md:inline">Télécharger CV</span>
-                        <span class="md:hidden">CV</span>
-                    </button>
-                    <a href="https://github.com" target="_blank" class="bg-gray-800 text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-700 transition-colors inline-flex items-center justify-center">
-                        <i class="fab fa-github mr-2"></i>
-                        <span class="hidden md:inline">GitHub</span>
-                        <span class="md:hidden">GitHub</span>
-                    </a>
-                </div>
-
-                <!-- Social Share Buttons -->
-                <div class="flex justify-center space-x-4 mb-8 fade-in">
-                    <button onclick="shareOnSocial('facebook')" class="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700 transition-colors" title="Partager sur Facebook">
-                        <i class="fab fa-facebook-f"></i>
-                    </button>
-                    <button onclick="shareOnSocial('twitter')" class="bg-blue-400 text-white p-3 rounded-full hover:bg-blue-500 transition-colors" title="Partager sur Twitter">
-                        <i class="fab fa-twitter"></i>
-                    </button>
-                    <button onclick="shareOnSocial('linkedin')" class="bg-blue-700 text-white p-3 rounded-full hover:bg-blue-800 transition-colors" title="Partager sur LinkedIn">
-                        <i class="fab fa-linkedin-in"></i>
-                    </button>
-                    <button onclick="copyPortfolioLink()" class="bg-gray-600 text-white p-3 rounded-full hover:bg-gray-700 transition-colors" title="Copier le lien">
-                        <i class="fas fa-link"></i>
-                    </button>
                 </div>
                 
                 <!-- Stats -->
@@ -1253,6 +1241,20 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Jeu de Mémoire -->
+<div class="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg interactive-card click-effect fade-in">
+    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">🎮 Jeu de Mémoire</h3>
+    <div class="space-y-4">
+        <div style="display: flex; justify-content: space-around; margin-bottom: 12px; font-size: 0.8em; color: #666; background: #fff5f7; padding: 6px; border-radius: 8px;">
+            <div id="memoryMoves">Mouvements: 0</div>
+            <div id="memoryTimer">Temps: 0s</div>
+        </div>
+        <div id="memoryGameGrid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin: 15px 0;"></div>
+        <button class="w-full magic-btn text-white py-2 rounded-lg" onclick="resetMemoryGame()">
+            🔄 Nouvelle Partie
+        </button>
+    </div>
+</div>
                     
                     <!-- Digital Clock -->
                     <div class="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg interactive-card fade-in">
@@ -2137,334 +2139,166 @@ button {
         }
         
         setTimeout(createParticles, 4000);
+        // Jeu de Mémoire
+let memoryMoves = 0;
+let memoryMatches = 0;
+let memoryTimer = 0;
+let memoryTimerInterval;
+let memoryFlippedCards = [];
+let memoryCanFlip = true;
+const memoryTotalPairs = 6;
 
-        // New Button Functions
+const memoryCardSets = [
+    '🐶', '🐱', '🐭', 
+    '🐦', '🐧', '🦉',
+    '🚗', '🚙', '🏎️',
+    '🐶', '🐱', '🐭', 
+    '🐦', '🐧', '🦉',
+    '🚗', '🚙', '🏎️'
+];
+
+function initMemoryGame() {
+    const grid = document.getElementById('memoryGameGrid');
+    grid.innerHTML = '';
+    
+    const shuffledCards = [...memoryCardSets].sort(() => Math.random() - 0.5);
+    
+    shuffledCards.forEach((emoji, index) => {
+        const card = document.createElement('div');
+        card.className = 'memory-card';
+        card.style.cssText = `
+            height: 60px;
+            background: linear-gradient(135deg, #e91e63, #ff9800);
+            border-radius: 6px;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            transition: all 0.3s ease;
+            position: relative;
+        `;
+        card.innerHTML = `
+            <div style="position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 6px; display: flex; justify-content: center; align-items: center; font-size: 1.3em; background: linear-gradient(135deg, #e91e63, #ff9800); color: white;">?</div>
+            <div style="position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 6px; display: flex; justify-content: center; align-items: center; font-size: 1.3em; background: white; transform: rotateY(180deg);">${emoji}</div>
+        `;
+        card.addEventListener('click', () => flipMemoryCard(card, emoji));
+        grid.appendChild(card);
+    });
+
+    resetMemoryStats();
+    startMemoryTimer();
+}
+
+function flipMemoryCard(card, emoji) {
+    if (!memoryCanFlip || card.classList.contains('flipped') || card.classList.contains('matched')) {
+        return;
+    }
+
+    card.style.transform = 'rotateY(180deg)';
+    card.classList.add('flipped');
+    memoryFlippedCards.push({card, emoji});
+
+    if (memoryFlippedCards.length === 2) {
+        memoryCanFlip = false;
+        memoryMoves++;
+        document.getElementById('memoryMoves').textContent = `Mouvements: ${memoryMoves}`;
         
-        // Download CV Function
-        document.getElementById('download-cv-btn').addEventListener('click', function() {
-            // Create a professional CV content
-            const cvContent = `
-MOHAMED EL YOUNOUSSI
-Étudiant Développeur Web | 15 ans | 3ème année
-════════════════════════════════════════════════════════════════
+        checkMemoryMatch();
+    }
+}
 
-📧 Contact
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Email: mohamed.elyounoussi@example.com
-Téléphone: +212 6XX XXX XXX
-Localisation: Rabat, Maroc
-LinkedIn: linkedin.com/in/mohamed-elyounoussi
-GitHub: github.com/mohamed-elyounoussi
-Portfolio: [URL de votre site]
-
-🎯 Profil
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Étudiant passionné de 15 ans en 3ème année au Collège Ibn Khaldoun à Rabat.
-Autodidacte en programmation depuis 1 an, avec une forte motivation pour
-le développement web et les nouvelles technologies. Objectif : intégrer une
-école d'ingénieur en informatique et devenir développeur full-stack.
-
-🎓 Formation
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-2024-2025    3ème année - Collège Ibn Khaldoun, Rabat
-2023-2024    4ème année - Collège Ibn Khaldoun, Rabat
-2022-2023    5ème année - Collège Ibn Khaldoun, Rabat
-2021-2022    6ème année - Initiation à Scratch
-
-💻 Compétences Techniques
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Langages de Programmation:
-  • HTML5/CSS3          ████████████████ 80% (Intermédiaire+)
-  • JavaScript          ████░░░░░░░░░░░░ 25% (Débutant+)
-  • Python              ███░░░░░░░░░░░░░ 20% (Débutant+)
-  • Scratch              ███████████████░ 90% (Avancé)
-
-Outils & Technologies:
-  • Git/GitHub           ████░░░░░░░░░░░░ 25% (Débutant)
-  • VS Code              ██████████████░░ 85% (Intermédiaire)
-  • TailwindCSS          ██████████░░░░░░ 60% (Débutant+)
-  • Responsive Design    ████████████░░░░ 70% (Intermédiaire)
-
-Soft Skills:
-  • Résolution de problèmes    ████████████████ 85%
-  • Apprentissage autodidacte  ████████████████ 90%
-  • Travail en équipe          ███████████░░░░░ 70%
-  • Communication             ████████████░░░░ 75%
-
-🚀 Projets Réalisés
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-1. Portfolio Personnel (Nov 2024) - 3 semaines
-   • Site web responsive avec animations CSS avancées
-   • Interface utilisateur moderne et interactive
-   • Technologies: HTML5, CSS3, JavaScript, TailwindCSS
-   • Fonctionnalités: Mode sombre, calculatrice, jeux interactifs
-
-2. Calculatrice Web Interactive (Oct 2024) - 1 semaine
-   • Calculatrice avec interface moderne et gestion d'erreurs
-   • Premier projet JavaScript fonctionnel
-   • Technologies: HTML5, CSS3, JavaScript vanilla
-
-3. Jeu Pierre-Papier-Ciseaux (Sep 2024) - 3 jours
-   • Jeu console avec interface colorée et système de scores
-   • Premier projet Python autonome
-   • Technologies: Python, Colorama
-
-4. Chronomètre Digital (Oct 2024) - 2 jours
-   • Application web avec fonctions start/stop/reset
-   • Interface minimaliste et notifications sonores
-   • Technologies: HTML5, CSS3, JavaScript
-
-5. Quiz Interactif (En cours - Déc 2024) - 70% terminé
-   • Quiz de culture générale avec timer et système de points
-   • Projet pour améliorer les compétences JavaScript
-   • Technologies: HTML5, CSS3, JavaScript avancé
-
-🎯 Projets Futurs
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-• Chatbot Simple (Jan 2025) - Python + API
-• Application Météo (Fév 2025) - JavaScript + API REST
-• Site E-commerce Simple (Mar 2025) - HTML/CSS/JS avancé
-
-📈 Statistiques
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-• Temps de programmation: 150+ heures depuis septembre 2023
-• Projets terminés: 6
-• Langages appris: 4 (HTML, CSS, JavaScript, Python)
-• Concours de programmation au collège: Participant actif
-
-🌟 Accomplissements & Reconnaissance
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-• Apprentissage autonome de la programmation en 1 an
-• Création d'un portfolio professionnel complet
-• Participation aux activités informatiques du collège
-• Mention "Très Bien" en cours de technologie
-
-🎯 Objectifs Professionnels
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Court terme (6 mois):
-  • Maîtriser JavaScript (niveau intermédiaire)
-  • Apprendre les bases de React
-  • Créer 5 nouveaux projets web interactifs
-
-Moyen terme (2 ans):
-  • Intégrer un lycée avec option informatique
-  • Commencer l'apprentissage du backend (Node.js)
-  • Participer à des hackathons jeunes
-
-Long terme (5 ans):
-  • École d'ingénieur en informatique (ENSIAS, EMI, etc.)
-  • Spécialisation en développement full-stack
-  • Stage dans une entreprise tech au Maroc
-
-🗣️ Langues
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-• Français: Langue maternelle
-• Arabe: Langue maternelle  
-• Anglais: Niveau intermédiaire (lecture tech, tutoriels)
-
-💡 Centres d'Intérêt
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-• Veille technologique (YouTube, GitHub, Dev.to)
-• Jeux vidéo et game design
-• Science-fiction et nouvelles technologies
-• Football et sports collectifs
-
-════════════════════════════════════════════════════════════════
-"La programmation est mon langage pour créer l'avenir."
-                                          - Mohamed El Younoussi
-════════════════════════════════════════════════════════════════
-
-Généré automatiquement depuis le portfolio - Version ${new Date().getFullYear()}
-Dernière mise à jour: ${new Date().toLocaleDateString('fr-FR')}
-            `;
-            
-            const blob = new Blob([cvContent], { type: 'text/plain; charset=utf-8' });
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `Mohamed_El_Younoussi_CV_${new Date().getFullYear()}.txt`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            window.URL.revokeObjectURL(url);
-            
-            showSuccessMessage('CV professionnel téléchargé avec succès ! 📄');
-        });
-
-        // Social Share Functions
-        function shareOnSocial(platform) {
-            const url = encodeURIComponent(window.location.href);
-            const text = encodeURIComponent('Découvrez le portfolio de Mohamed El Younoussi - Étudiant développeur passionné !');
-            
-            let shareUrl = '';
-            
-            switch(platform) {
-                case 'facebook':
-                    shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
-                    break;
-                case 'twitter':
-                    shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${text}`;
-                    break;
-                case 'linkedin':
-                    shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
-                    break;
-            }
-            
-            if (shareUrl) {
-                window.open(shareUrl, '_blank', 'width=600,height=400');
-            }
+function checkMemoryMatch() {
+    const [card1, card2] = memoryFlippedCards;
+    
+    if (card1.emoji === card2.emoji) {
+        card1.card.classList.add('matched');
+        card2.card.classList.add('matched');
+        card1.card.style.opacity = '0.7';
+        card2.card.style.opacity = '0.7';
+        memoryMatches++;
+        
+        memoryFlippedCards = [];
+        memoryCanFlip = true;
+        
+        if (memoryMatches === memoryTotalPairs) {
+            endMemoryGame();
         }
-
-        function copyPortfolioLink() {
-            navigator.clipboard.writeText(window.location.href).then(() => {
-                showSuccessMessage('Lien du portfolio copié dans le presse-papiers !');
-            }).catch(() => {
-                showSuccessMessage('Impossible de copier le lien automatiquement.');
-            });
-        }
-
-        // Quick Action Buttons
-        function refreshPage() {
-            window.location.reload();
-        }
-
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
-
-        function printPage() {
-            window.print();
-        }
-
-        // Color Theme Changer
-        function changeThemeColor(color) {
-            const root = document.documentElement;
-            root.style.setProperty('--primary-color', color);
-            
-            // Update all elements with the primary color
-            document.querySelectorAll('.bg-purple-600, .text-purple-600, .border-purple-600').forEach(el => {
-                el.style.background = color;
-                el.style.color = color;
-                el.style.borderColor = color;
-            });
-            
-            showSuccessMessage(`Thème changé vers ${color} !`);
-        }
-
-        // Navigation Helper Functions
-        function goToSection(sectionId) {
-            const section = document.getElementById(sectionId);
-            if (section) {
-                section.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        }
-
-        // Project Demo Functions
-        function launchDemo(projectName) {
-            let demoContent = '';
-            
-            switch(projectName) {
-                case 'calculator':
-                    demoContent = 'Lancement de la démo calculatrice...';
-                    break;
-                case 'game':
-                    demoContent = 'Lancement du jeu Pierre-Papier-Ciseaux...';
-                    break;
-                case 'quiz':
-                    demoContent = 'Le quiz est en développement...';
-                    break;
-                default:
-                    demoContent = 'Démo non disponible pour ce projet.';
-            }
-            
-            showSuccessMessage(demoContent);
-        }
-
-        // Add scroll to top button
-        function addScrollToTopButton() {
-            const scrollBtn = document.createElement('button');
-            scrollBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
-            scrollBtn.className = 'fixed bottom-6 right-6 bg-purple-600 text-white p-3 rounded-full shadow-lg hover:bg-purple-700 transition-all duration-300 z-40 opacity-0 pointer-events-none';
-            scrollBtn.id = 'scroll-to-top';
-            scrollBtn.title = 'Retour en haut';
-            scrollBtn.addEventListener('click', scrollToTop);
-            
-            document.body.appendChild(scrollBtn);
-            
-            // Show/hide button based on scroll position
-            window.addEventListener('scroll', function() {
-                if (window.pageYOffset > 300) {
-                    scrollBtn.classList.remove('opacity-0', 'pointer-events-none');
-                    scrollBtn.classList.add('opacity-100');
-                } else {
-                    scrollBtn.classList.add('opacity-0', 'pointer-events-none');
-                    scrollBtn.classList.remove('opacity-100');
-                }
-            });
-        }
-
-        // Add floating action buttons
-        function addFloatingActionButtons() {
-            const fabContainer = document.createElement('div');
-            fabContainer.className = 'fixed bottom-6 left-6 flex flex-col space-y-3 z-40';
-            
-            const fabButtons = [
-                { icon: 'fas fa-palette', title: 'Changer couleur', action: () => changeThemeColor('#' + Math.floor(Math.random()*16777215).toString(16)) },
-                { icon: 'fas fa-refresh', title: 'Actualiser', action: refreshPage },
-                { icon: 'fas fa-print', title: 'Imprimer', action: printPage },
-                { icon: 'fas fa-heart', title: 'J\'aime', action: () => showSuccessMessage('Merci pour votre soutien ! ❤️') }
-            ];
-            
-            fabButtons.forEach(btn => {
-                const button = document.createElement('button');
-                button.innerHTML = `<i class="${btn.icon}"></i>`;
-                button.className = 'bg-gray-800 text-white p-3 rounded-full shadow-lg hover:bg-gray-700 transition-all duration-300 transform hover:scale-110';
-                button.title = btn.title;
-                button.addEventListener('click', btn.action);
-                fabContainer.appendChild(button);
-            });
-            
-            document.body.appendChild(fabContainer);
-        }
-
-        // Add quick navigation buttons
-        function addQuickNavButtons() {
-            const quickNav = document.createElement('div');
-            quickNav.className = 'fixed top-1/2 right-4 transform -translate-y-1/2 flex flex-col space-y-2 z-30';
-            
-            const sections = [
-                { id: 'accueil', icon: 'fas fa-home', title: 'Accueil' },
-                { id: 'about', icon: 'fas fa-user', title: 'À propos' },
-                { id: 'competences', icon: 'fas fa-code', title: 'Compétences' },
-                { id: 'projets', icon: 'fas fa-folder-open', title: 'Projets' },
-                { id: 'playground', icon: 'fas fa-gamepad', title: 'Zone Interactive' },
-                { id: 'contact', icon: 'fas fa-envelope', title: 'Contact' }
-            ];
-            
-            sections.forEach(section => {
-                const button = document.createElement('button');
-                button.innerHTML = `<i class="${section.icon}"></i>`;
-                button.className = 'bg-white dark:bg-gray-800 text-gray-800 dark:text-white p-2 rounded-full shadow-md hover:bg-purple-600 hover:text-white transition-all duration-300 w-10 h-10 flex items-center justify-center';
-                button.title = section.title;
-                button.addEventListener('click', () => goToSection(section.id));
-                quickNav.appendChild(button);
-            });
-            
-            document.body.appendChild(quickNav);
-        }
-
-        // Initialize all new features
+    } else {
         setTimeout(() => {
-            addScrollToTopButton();
-            addFloatingActionButtons();
-            addQuickNavButtons();
-        }, 2000);
+            card1.card.style.transform = 'rotateY(0deg)';
+            card2.card.style.transform = 'rotateY(0deg)';
+            card1.card.classList.remove('flipped');
+            card2.card.classList.remove('flipped');
+            memoryFlippedCards = [];
+            memoryCanFlip = true;
+        }, 600);
+    }
+}
+
+function resetMemoryStats() {
+    memoryMoves = 0;
+    memoryMatches = 0;
+    memoryTimer = 0;
+    memoryFlippedCards = [];
+    memoryCanFlip = true;
+    
+    document.getElementById('memoryMoves').textContent = 'Mouvements: 0';
+    document.getElementById('memoryTimer').textContent = 'Temps: 0s';
+    
+    clearInterval(memoryTimerInterval);
+}
+
+function startMemoryTimer() {
+    memoryTimerInterval = setInterval(() => {
+        memoryTimer++;
+        document.getElementById('memoryTimer').textContent = `Temps: ${memoryTimer}s`;
+    }, 1000);
+}
+
+function endMemoryGame() {
+    clearInterval(memoryTimerInterval);
+    createMemoryConfetti();
+    
+    setTimeout(() => {
+        showSuccessMessage(`🎉 Bravo ! Tu as gagné en ${memoryMoves} mouvements et ${memoryTimer} secondes !`);
+    }, 600);
+}
+
+function resetMemoryGame() {
+    initMemoryGame();
+}
+
+function createMemoryConfetti() {
+    const colors = ['#e91e63', '#ff9800', '#4caf50', '#2196f3', '#9c27b0', '#ffeb3b'];
+    
+    for (let i = 0; i < 30; i++) {
+        const confetti = document.createElement('div');
+        confetti.style.cssText = `
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            background: ${colors[Math.floor(Math.random() * colors.length)]};
+            border-radius: 50%;
+            left: ${Math.random() * 100}vw;
+            animation: confettiFall ${Math.random() * 1.5 + 1}s linear forwards;
+            opacity: 0;
+        `;
+        document.body.appendChild(confetti);
+        
+        setTimeout(() => confetti.remove(), 2500);
+    }
+}
+
+// Ajoute cette animation CSS pour les confettis
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes confettiFall {
+        0% { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+        100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+`;
+document.head.appendChild(style);
+
+// Initialise le jeu au chargement
+setTimeout(initMemoryGame, 1000);
     </script>
 </body>
 </html>
